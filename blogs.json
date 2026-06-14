@@ -1,0 +1,140 @@
+{
+  "generatedAt": "2026-06-14T14:11:05.570Z",
+  "count": 12,
+  "blogs": [
+    {
+      "slug": "discordsucksass",
+      "path": "posts/discordsucksass.md",
+      "title": "My main discord account got suspended, forever...",
+      "desc": "I love thier AI moderation.",
+      "date": "04-10-2026",
+      "tags": [
+        "Personal Problem"
+      ]
+    },
+    {
+      "slug": "writeup-ntz48",
+      "path": "posts/writeup-ntz48.md",
+      "title": "[Writeup] NZT-48 Is Calling",
+      "desc": "อวสานเด็กเบียวแฮก roblox krnl มันฟรีแล้วมึงจะไปโหลดเถื่อนหา...",
+      "date": "01-06-2026",
+      "tags": [
+        "ArchaCTF",
+        "CTF",
+        "CyberSecurity"
+      ]
+    },
+    {
+      "slug": "turnyourusbprintertowireless",
+      "path": "posts/turnyourusbprintertowireless.md",
+      "title": "Turning a USB-Only Printer into a Wireless Printer with CUPS (Self-Hosted on Linux)",
+      "desc": "Don’t throw away that old printer — make it wireless instead!",
+      "date": "10-14-2025",
+      "tags": [
+        "How-to",
+        "Linux"
+      ]
+    },
+    {
+      "slug": "nomorevercel",
+      "path": "posts/nomorevercel.md",
+      "title": "Moving out from Vercel to TechTransThai!",
+      "desc": "mhm?",
+      "date": "10-13-2025",
+      "tags": [
+        "Personal Website"
+      ]
+    },
+    {
+      "slug": "augupdate",
+      "path": "posts/augupdate.md",
+      "title": "We now have comments!",
+      "desc": "No way.",
+      "date": "08-15-2025",
+      "tags": [
+        "Personal Website"
+      ]
+    },
+    {
+      "slug": "ijoinedttt-org",
+      "path": "posts/ijoinedttt-org.md",
+      "title": "I Joined techtransthai.org",
+      "desc": "I was bored and ended up writing this blog at 12AM. Definitely not an accident lol.",
+      "date": "06-05-2025",
+      "tags": [
+        "Personal life",
+        "Open source project"
+      ]
+    },
+    {
+      "slug": "enoughwithcrazyerror",
+      "path": "posts/enoughwithcrazyerror.md",
+      "title": "Enough with Crazy Error",
+      "desc": "Thanks for everything, but it's time to move on.",
+      "date": "05-11-2025",
+      "tags": [
+        "crazyerror",
+        "random"
+      ]
+    },
+    {
+      "slug": "timetomoveon",
+      "path": "posts/timetomoveon.md",
+      "title": "Moving On from the Past",
+      "desc": "Archiving my old 'educational' tools on GitHub — a personal reflection on growth, learning, and letting go.",
+      "date": "05-10-2025",
+      "tags": [
+        "GitHub",
+        "Reflection",
+        "Programming Journey",
+        "Personal Life",
+        "Growth"
+      ]
+    },
+    {
+      "slug": "backnotwhy",
+      "path": "posts/backnotwhy.md",
+      "title": "I'm back but not the same.",
+      "desc": "This back to normal but not the same!",
+      "date": "01-28-2025",
+      "tags": [
+        "website",
+        "domain",
+        "personal"
+      ]
+    },
+    {
+      "slug": "mccooked-th",
+      "path": "posts/mccooked-th.md",
+      "title": "MCTham อาจจะเน่ากว่าที่คิด...ให้หนูพูดเถอะ",
+      "desc": "MCTham with endless drama....",
+      "date": "12-08-2024",
+      "tags": [
+        "drama",
+        "minecraft server"
+      ]
+    },
+    {
+      "slug": "mccooked",
+      "path": "posts/mccooked.md",
+      "title": "MCTham more like MCCooked, let me explain",
+      "desc": "MCTham with endless drama....",
+      "date": "12-08-2024",
+      "tags": [
+        "drama",
+        "minecraft server"
+      ]
+    },
+    {
+      "slug": "moveon",
+      "path": "posts/moveon.md",
+      "title": "Goodbye fusemeow.me, Hello blueskychan.dev",
+      "desc": "Hello world!",
+      "date": "12-28-2023",
+      "tags": [
+        "new home",
+        "new stuff"
+      ]
+    }
+  ]
+}
