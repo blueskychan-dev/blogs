@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T14:13:19.629Z",
+  "generatedAt": "2026-06-14T14:24:13.595Z",
   "count": 12,
   "blogs": [
     {
@@ -10,7 +10,8 @@
       "date": "04-10-2026",
       "tags": [
         "Personal Problem"
-      ]
+      ],
+      "assets": []
     },
     {
       "slug": "writeup-ntz48",
@@ -22,6 +23,38 @@
         "ArchaCTF",
         "CTF",
         "CyberSecurity"
+      ],
+      "assets": [
+        "/ntz48/7120network.png",
+        "/ntz48/buildclient.png",
+        "/ntz48/chatgpt.png",
+        "/ntz48/checkpeandrename.png",
+        "/ntz48/client.png",
+        "/ntz48/clientwithdata.png",
+        "/ntz48/command1.png",
+        "/ntz48/command2.png",
+        "/ntz48/command3.png",
+        "/ntz48/current-ranking.png",
+        "/ntz48/decodepassword.png",
+        "/ntz48/failed1.png",
+        "/ntz48/gitandmakeit.png",
+        "/ntz48/github.png",
+        "/ntz48/pastebinacc.png",
+        "/ntz48/pid7120.png",
+        "/ntz48/pid7120object.png",
+        "/ntz48/pkneed.png",
+        "/ntz48/rawpastedata.png",
+        "/ntz48/realname.png",
+        "/ntz48/result1.png",
+        "/ntz48/result10.png",
+        "/ntz48/result2.png",
+        "/ntz48/result3.png",
+        "/ntz48/result4.png",
+        "/ntz48/robloxacc.png",
+        "/ntz48/searchquery.png",
+        "/ntz48/virustotal.png",
+        "/ntz48/vol3confirmed.png",
+        "/ntz48/weirderror.png"
       ]
     },
     {
@@ -33,6 +66,24 @@
       "tags": [
         "How-to",
         "Linux"
+      ],
+      "assets": [
+        "/printer/adminpage.png",
+        "/printer/check1.png",
+        "/printer/choose1.png",
+        "/printer/choose2.png",
+        "/printer/choose3.png",
+        "/printer/cupswebsite.png",
+        "/printer/done1.png",
+        "/printer/enablesmb.png",
+        "/printer/lsusb.png",
+        "/printer/plugusb.gif",
+        "/printer/sambaconfig.png",
+        "/printer/select.png",
+        "/printer/testprint.png",
+        "/printer/testprintresult.png",
+        "/printer/theprinter.png",
+        "/printer/wirelesstest.mp4"
       ]
     },
     {
@@ -43,6 +94,11 @@
       "date": "10-13-2025",
       "tags": [
         "Personal Website"
+      ],
+      "assets": [
+        "/verceldrama/dig.png",
+        "/verceldrama/tg.png",
+        "/verceldrama/twitter.png"
       ]
     },
     {
@@ -53,6 +109,9 @@
       "date": "08-15-2025",
       "tags": [
         "Personal Website"
+      ],
+      "assets": [
+        "/setup/fedorarice.png"
       ]
     },
     {
@@ -64,7 +123,8 @@
       "tags": [
         "Personal life",
         "Open source project"
-      ]
+      ],
+      "assets": []
     },
     {
       "slug": "enoughwithcrazyerror",
@@ -75,7 +135,8 @@
       "tags": [
         "crazyerror",
         "random"
-      ]
+      ],
+      "assets": []
     },
     {
       "slug": "timetomoveon",
@@ -89,7 +150,8 @@
         "Programming Journey",
         "Personal Life",
         "Growth"
-      ]
+      ],
+      "assets": []
     },
     {
       "slug": "backnotwhy",
@@ -101,6 +163,9 @@
         "website",
         "domain",
         "personal"
+      ],
+      "assets": [
+        "/abcdefg/lost.png"
       ]
     },
     {
@@ -112,6 +177,35 @@
       "tags": [
         "drama",
         "minecraft server"
+      ],
+      "assets": [
+        "/mctham-archive/1.jpg",
+        "/mctham-archive/2.jpg",
+        "/mctham-archive/3.jpg",
+        "/mctham-archive/a.png",
+        "/mctham-archive/aa.png",
+        "/mctham-archive/aaa.png",
+        "/mctham-archive/aaaa.png",
+        "/mctham-archive/abc.png",
+        "/mctham-archive/abc1.png",
+        "/mctham-archive/cook-myself.png",
+        "/mctham-archive/deeka-smp.png",
+        "/mctham-archive/deeka.png",
+        "/mctham-archive/ego.png",
+        "/mctham-archive/ego2.png",
+        "/mctham-archive/ego727-1.png",
+        "/mctham-archive/ego727-2.png",
+        "/mctham-archive/ego727.png",
+        "/mctham-archive/femboypp.jpg",
+        "/mctham-archive/hmm.png",
+        "/mctham-archive/kb-ffa-gif.gif",
+        "/mctham-archive/kick.png",
+        "/mctham-archive/longdiscord.jpg",
+        "/mctham-archive/mcthamdotnet.png",
+        "/mctham-archive/ok.png",
+        "/mctham-archive/poll.png",
+        "/mctham-archive/ss2-hunter.png",
+        "/mctham-archive/war.png"
       ]
     },
     {
@@ -123,6 +217,35 @@
       "tags": [
         "drama",
         "minecraft server"
+      ],
+      "assets": [
+        "/mctham-archive/1.jpg",
+        "/mctham-archive/2.jpg",
+        "/mctham-archive/3.jpg",
+        "/mctham-archive/a.png",
+        "/mctham-archive/aa.png",
+        "/mctham-archive/aaa.png",
+        "/mctham-archive/aaaa.png",
+        "/mctham-archive/abc.png",
+        "/mctham-archive/abc1.png",
+        "/mctham-archive/cook-myself.png",
+        "/mctham-archive/deeka-smp.png",
+        "/mctham-archive/deeka.png",
+        "/mctham-archive/ego.png",
+        "/mctham-archive/ego2.png",
+        "/mctham-archive/ego727-1.png",
+        "/mctham-archive/ego727-2.png",
+        "/mctham-archive/ego727.png",
+        "/mctham-archive/femboypp.jpg",
+        "/mctham-archive/hmm.png",
+        "/mctham-archive/kb-ffa-gif.gif",
+        "/mctham-archive/kick.png",
+        "/mctham-archive/longdiscord.jpg",
+        "/mctham-archive/mcthamdotnet.png",
+        "/mctham-archive/ok.png",
+        "/mctham-archive/poll.png",
+        "/mctham-archive/ss2-hunter.png",
+        "/mctham-archive/war.png"
       ]
     },
     {
@@ -134,7 +257,8 @@
       "tags": [
         "new home",
         "new stuff"
-      ]
+      ],
+      "assets": []
     }
   ]
 }

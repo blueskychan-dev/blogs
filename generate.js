@@ -48,6 +48,31 @@ function parseFrontmatter(raw) {
   return { data, body };
 }
 
+// Scan a markdown body for referenced assets. Catches markdown image syntax
+// `![alt](/path)`, markdown links to media, and raw `<img src>`/`<source src>`
+// tags. Returns a sorted, de-duplicated list of the referenced paths.
+function extractAssets(body) {
+  const MEDIA = /\.(png|jpe?g|gif|webp|svg|avif|mp4|webm|mov|mp3|wav|ogg|pdf)$/i;
+  const found = new Set();
+
+  // Markdown: ![alt](url) and [text](url)
+  const mdLink = /!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
+  // HTML: src="url" or src='url'
+  const htmlSrc = /\bsrc\s*=\s*["']([^"']+)["']/gi;
+
+  let m;
+  while ((m = mdLink.exec(body)) !== null) {
+    const url = m[1].trim();
+    if (MEDIA.test(url.split(/[?#]/)[0])) found.add(url);
+  }
+  while ((m = htmlSrc.exec(body)) !== null) {
+    const url = m[1].trim();
+    if (MEDIA.test(url.split(/[?#]/)[0])) found.add(url);
+  }
+
+  return [...found].sort();
+}
+
 function stripQuotes(s) {
   if (
     (s.startsWith('"') && s.endsWith('"')) ||
@@ -72,11 +97,12 @@ function main() {
   const blogs = files.map((file) => {
     const fullPath = path.join(POSTS_DIR, file);
     const raw = fs.readFileSync(fullPath, "utf8");
-    const { data } = parseFrontmatter(raw);
+    const { data, body } = parseFrontmatter(raw);
     return {
       slug: file.replace(/\.md$/i, ""),
       path: path.posix.join("posts", file),
       ...data,
+      assets: extractAssets(body),
     };
   });
 
