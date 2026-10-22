@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 2060" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" role="img" aria-label="Geaix VS Code extension attack chain">
+  <title>Geaix VS Code / Antigravity Extension — Attack Chain</title>
+  <desc>Flowchart: trojanised VSIX extension drops a signed javaw.exe plus a malicious jli.dll, side-loads to reflectively map an in-memory infostealer that exfiltrates to dtapi.cc, x1zsp.cc and cfmlapi.cc.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+
+    <!-- Stage accent colors -->
+    <linearGradient id="s0" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="s1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fbbf24"/><stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="s2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fb923c"/><stop offset="1" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="s3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f87171"/><stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="s4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <!-- Soft card shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Arrow marker -->
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 L 3 6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="2060" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <g>
+    <text x="600" y="56" text-anchor="middle" font-size="30" font-weight="700" fill="#f8fafc">Geaix VS Code / Antigravity Extension — Attack Chain</text>
+    <text x="600" y="86" text-anchor="middle" font-size="15" fill="#94a3b8">Trojanised <tspan font-family="monospace" fill="#cbd5e1">geaix.geaix-1.0.24</tspan> → DLL side-loading → in-memory infostealer, clipper &amp; runner</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(50,114)">
+    <rect x="0" y="0" width="1100" height="46" rx="10" fill="#1f2937" stroke="#374151"/>
+    <g font-size="13" fill="#e5e7eb">
+      <circle cx="22" cy="23" r="7" fill="url(#s0)"/><text x="38" y="27">Victim action</text>
+      <circle cx="190" cy="23" r="7" fill="url(#s1)"/><text x="206" y="27">Stage 1 — JS dropper</text>
+      <circle cx="400" cy="23" r="7" fill="url(#s2)"/><text x="416" y="27">Stage 2 — side-loaded loader DLL</text>
+      <circle cx="680" cy="23" r="7" fill="url(#s3)"/><text x="696" y="27">Stage 3 — in-memory stealer / clipper</text>
+      <circle cx="970" cy="23" r="7" fill="url(#s4)"/><text x="986" y="27">C2 / network</text>
+    </g>
+  </g>
+
+  <!-- Vertical rail -->
+  <line x1="600" y1="190" x2="600" y2="1140" stroke="#334155" stroke-width="2" stroke-dasharray="4 6"/>
+
+  <!-- =========================================================== -->
+  <!-- Node 1: Victim downloads VSIX -->
+  <g transform="translate(300,195)" filter="url(#shadow)">
+    <rect width="600" height="88" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="88" rx="3" fill="url(#s0)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Victim downloads a VS Code extension from geaix.com</text>
+    <text x="24" y="54" font-size="12.5" fill="#cbd5e1" font-family="monospace">GET https://geaix.com/vsix/geaix-1.0.24.vsix</text>
+    <text x="24" y="74" font-size="12.5" fill="#94a3b8">looks like a real AI coding agent (rebadged Kilo Code fork)</text>
+  </g>
+  <path d="M600 283 L600 310" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 2: Install -->
+  <g transform="translate(300,318)" filter="url(#shadow)">
+    <rect width="600" height="80" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="80" rx="3" fill="url(#s0)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Installed into VS Code / Google Antigravity</text>
+    <text x="24" y="52" font-size="12.5" fill="#cbd5e1" font-family="monospace">~/.antigravity/extensions/geaix.geaix-1.0.24</text>
+    <text x="24" y="70" font-size="12.5" fill="#94a3b8">activationEvents: onLanguage, onStartupFinished → runs on every editor start</text>
+  </g>
+  <path d="M600 398 L600 425" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 3: Stage 1 dropper -->
+  <g transform="translate(260,433)" filter="url(#shadow)">
+    <rect width="680" height="150" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="150" rx="3" fill="url(#s1)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Stage 1 — JavaScript dropper (<tspan font-family="monospace">Kgt()</tspan> in <tspan font-family="monospace">extension.js</tspan>)</text>
+    <g font-size="12.5" fill="#cbd5e1">
+      <text x="24" y="56">① Reads <tspan font-family="monospace" fill="#f9fafb">geaix.account.token</tspan> from <tspan font-family="monospace" fill="#f9fafb">context.secrets</tspan></text>
+      <text x="24" y="76">② <tspan font-family="monospace" fill="#f9fafb">GET /api/vscode/software/pick?platform=win</tspan> (Bearer token, <tspan font-family="monospace">x-geaix-feat: zip</tspan>)</text>
+      <text x="24" y="96">③ <tspan font-family="monospace" fill="#f9fafb">GET /api/vscode/software/download/&lt;id&gt;</tspan> → verify SHA-256</text>
+      <text x="24" y="116">④ Extract with <tspan font-family="monospace" fill="#f9fafb">yauzl</tspan> into <tspan font-family="monospace" fill="#f9fafb">%TEMP%\&lt;decoy&gt;-&lt;hex&gt;\</tspan> (12-prefix pool)</text>
+      <text x="24" y="136">⑤ Cache path + SHA-256 in <tspan font-family="monospace" fill="#f9fafb">globalState</tspan> so later launches skip the fetch</text>
+    </g>
+  </g>
+  <path d="M600 583 L600 610" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 4: 3-file drop -->
+  <g transform="translate(220,618)" filter="url(#shadow)">
+    <rect width="760" height="140" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="140" rx="3" fill="url(#s1)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Three files land in the decoy <tspan font-family="monospace">%TEMP%</tspan> folder</text>
+    <g font-size="12.5">
+      <rect x="24" y="48" width="230" height="78" rx="8" fill="#111827" stroke="#1f2937"/>
+      <text x="36" y="68" font-weight="700" fill="#f8fafc">javaw.exe</text>
+      <text x="36" y="86" fill="#94a3b8">signed Eclipse Adoptium</text>
+      <text x="36" y="102" fill="#94a3b8">Temurin OpenJDK launcher</text>
+      <text x="36" y="118" fill="#64748b" font-family="monospace">50,344 B</text>
+
+      <rect x="266" y="48" width="230" height="78" rx="8" fill="#111827" stroke="#dc2626"/>
+      <text x="278" y="68" font-weight="700" fill="#fecaca">jli.dll</text>
+      <text x="278" y="86" fill="#fca5a5">malicious lookalike</text>
+      <text x="278" y="102" fill="#fca5a5">internal name: <tspan font-family="monospace">loader.dll</tspan></text>
+      <text x="278" y="118" fill="#f87171" font-family="monospace">736,256 B</text>
+
+      <rect x="508" y="48" width="230" height="78" rx="8" fill="#111827" stroke="#1f2937"/>
+      <text x="520" y="68" font-weight="700" fill="#f8fafc">vcruntime140.dll</text>
+      <text x="520" y="86" fill="#94a3b8">real Microsoft C runtime</text>
+      <text x="520" y="102" fill="#94a3b8">required by <tspan font-family="monospace">javaw.exe</tspan></text>
+      <text x="520" y="118" fill="#64748b" font-family="monospace">123,472 B</text>
+    </g>
+  </g>
+  <path d="M600 758 L600 785" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 5: Spawn -->
+  <g transform="translate(300,793)" filter="url(#shadow)">
+    <rect width="600" height="88" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="88" rx="3" fill="url(#s1)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Detached, hidden launch</text>
+    <text x="24" y="54" font-size="12.5" fill="#cbd5e1" font-family="monospace">cmd.exe /c start "" /B javaw.exe   { detached:true, windowsHide:true }</text>
+    <text x="24" y="74" font-size="12.5" fill="#94a3b8">plus 15 min WebSocket telemetry to <tspan font-family="monospace">wss://geaix.com/api/ws</tspan></text>
+  </g>
+  <path d="M600 881 L600 908" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 6: Side loading -->
+  <g transform="translate(260,916)" filter="url(#shadow)">
+    <rect width="680" height="94" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="94" rx="3" fill="url(#s2)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Stage 2 — DLL side-loading</text>
+    <text x="24" y="54" font-size="12.5" fill="#cbd5e1">Windows loader sees <tspan font-family="monospace" fill="#f9fafb">jli.dll</tspan> next to <tspan font-family="monospace" fill="#f9fafb">javaw.exe</tspan> and resolves it from that directory.</text>
+    <text x="24" y="76" font-size="12.5" fill="#cbd5e1">Execution enters the attacker's <tspan font-family="monospace" fill="#f9fafb">JLI_Launch</tspan> export, running inside a signed, trusted process.</text>
+  </g>
+  <path d="M600 1010 L600 1037" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 7: Decrypt+LZ77+Reflective -->
+  <g transform="translate(220,1045)" filter="url(#shadow)">
+    <rect width="760" height="140" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="140" rx="3" fill="url(#s2)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">In-memory unpack and reflective PE map</text>
+    <g font-size="12.5" fill="#cbd5e1">
+      <text x="24" y="56">① Decode a 594,786-character <tspan font-family="monospace" fill="#f9fafb">.rdata</tspan> text blob (custom 64-char alphabet, 6-bit packing)</text>
+      <text x="24" y="76">② Decompress with a custom LZ77 → <tspan fill="#f9fafb">606,720 bytes of sections</tspan> for <tspan font-family="monospace" fill="#f9fafb">build.dll</tspan> (never written to disk)</text>
+      <text x="24" y="96">③ <tspan font-family="monospace" fill="#f9fafb">VirtualAlloc</tspan> one <tspan font-family="monospace" fill="#f9fafb">0x9B400</tspan>-byte RWX region, restore the zeroed <tspan font-family="monospace" fill="#f9fafb">MZ</tspan>/<tspan font-family="monospace" fill="#f9fafb">PE</tspan> header, map 8 sections</text>
+      <text x="24" y="116">④ Resolve 94 imports, apply 855 relocations, fake an LDR entry, call <tspan font-family="monospace" fill="#f9fafb">DllMain</tspan> once</text>
+    </g>
+  </g>
+  <path d="M600 1185 L600 1212" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 8: Stage 3 header -->
+  <g transform="translate(300,1220)" filter="url(#shadow)">
+    <rect width="600" height="56" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="56" rx="3" fill="url(#s3)"/>
+    <text x="24" y="34" font-size="16" font-weight="700" fill="#f8fafc">Stage 3 — <tspan font-family="monospace" fill="#fecaca">build.dll</tspan> runs inside the signed <tspan font-family="monospace" fill="#fecaca">javaw.exe</tspan></text>
+  </g>
+
+  <!-- Branch down into three columns -->
+  <path d="M600 1276 L600 1300 L170 1300 L170 1328" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M600 1300 L600 1328" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M600 1300 L1030 1300 L1030 1328" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Column A — Anti-analysis + fingerprint -->
+  <g transform="translate(50,1336)" filter="url(#shadow)">
+    <rect width="340" height="300" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="300" rx="3" fill="url(#s3)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Anti-analysis &amp; profiling</text>
+    <g font-size="12.5" fill="#cbd5e1">
+      <text x="24" y="58">• CPUID vs 31 hypervisor vendor</text>
+      <text x="24" y="76"><tspan font-family="monospace" fill="#f9fafb">VMware · VBox · KVM · Xen · Hyper-V ·</tspan></text>
+      <text x="24" y="94"><tspan font-family="monospace" fill="#f9fafb">bhyve · TCG · HAXM · …</tspan></text>
+      <text x="24" y="120">• CIS locale exclusion</text>
+      <text x="24" y="138"><tspan font-family="monospace" fill="#f9fafb">uk · uz · az · hy · tg · tk</tspan></text>
+      <text x="24" y="156"><tspan font-family="monospace" fill="#f9fafb">ky · kk · be · ru · ro-md</tspan></text>
+      <text x="24" y="178">(bails on match)</text>
+      <text x="24" y="206">• Full fingerprint:</text>
+      <text x="24" y="224">OS build, CPU, RAM, GPU, volume</text>
+      <text x="24" y="242">serial, username, keyboard layouts,</text>
+      <text x="24" y="260">installed software</text>
+      <text x="24" y="286">• Full-screen BMP via BitBlt+GetDIBits</text>
+    </g>
+  </g>
+
+  <!-- Column B — Credential theft -->
+  <g transform="translate(410,1336)" filter="url(#shadow)">
+    <rect width="380" height="420" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="420" rx="3" fill="url(#s3)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Credential &amp; session theft</text>
+    <g font-size="12.5" fill="#cbd5e1">
+      <text x="24" y="58">• <tspan fill="#f9fafb" font-weight="700">Chromium family</tspan> (any brand)</text>
+      <text x="36" y="76">Login Data, Login Data For Account,</text>
+      <text x="36" y="94">logins_alt, Web Data, History,</text>
+      <text x="36" y="112">Preferences, Network\Cookies,</text>
+      <text x="36" y="130">Local Storage\leveldb, Extensions</text>
+      <text x="24" y="156">• <tspan fill="#f9fafb" font-weight="700">Chrome v20 ABE bypass</tspan></text>
+      <text x="36" y="174">hidden desktop (CreateDesktopA),</text>
+      <text x="36" y="192">token impersonation, thread hijack,</text>
+      <text x="36" y="210">CryptUnprotectMemory</text>
+      <text x="24" y="236">• <tspan fill="#f9fafb" font-weight="700">Gecko</tspan> (Zen, Firefox, …)</text>
+      <text x="36" y="254">key4.db, logins.json, cookies.sqlite,</text>
+      <text x="36" y="272">places.sqlite, formhistory, autofill</text>
+      <text x="24" y="298">• <tspan fill="#f9fafb" font-weight="700">Discord &amp; Discord PTB</tspan></text>
+      <text x="36" y="316">DPAPI → AES-GCM via BCrypt →</text>
+      <text x="36" y="334">tokens.txt</text>
+      <text x="24" y="360">• <tspan fill="#f9fafb" font-weight="700">Steam</tspan> — SteamID + ConnectCache</text>
+      <text x="24" y="386">• <tspan fill="#f9fafb" font-weight="700">Roblox</tspan> — .ROBLOSECURITY cookie</text>
+    </g>
+  </g>
+
+  <!-- Column C — Clipper + runner -->
+  <g transform="translate(810,1336)" filter="url(#shadow)">
+    <rect width="340" height="420" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="420" rx="3" fill="url(#s3)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Clipper &amp; secondary runner</text>
+    <g font-size="12.5" fill="#cbd5e1">
+      <text x="24" y="58">• <tspan fill="#f9fafb" font-weight="700">Clipboard clipper</tspan></text>
+      <text x="36" y="76"><tspan font-family="monospace" fill="#f9fafb">Sleep(300)</tspan> loop +</text>
+      <text x="36" y="94"><tspan font-family="monospace" fill="#f9fafb">GetClipboardSequenceNumber</tspan></text>
+      <text x="36" y="116">Match prefixes:</text>
+      <text x="36" y="134"><tspan font-family="monospace" fill="#f9fafb">bc1  ltc1  bitcoincash:</tspan></text>
+      <text x="36" y="152"><tspan font-family="monospace" fill="#f9fafb">EQ   UQ    addr1</tspan></text>
+      <text x="36" y="176">Rewrite with attacker wallet</text>
+      <text x="24" y="208">• <tspan fill="#f9fafb" font-weight="700">Secondary payload runner</tspan></text>
+      <text x="36" y="226">Staging dir: <tspan font-family="monospace" fill="#f9fafb">%TEMP%</tspan></text>
+      <text x="36" y="248"><tspan font-family="monospace" fill="#f9fafb">.exe</tspan> → CreateProcessW</text>
+      <text x="36" y="266"><tspan font-family="monospace" fill="#f9fafb">.msi</tspan> → msiexec /i /qn /norestart</text>
+      <text x="36" y="284"><tspan font-family="monospace" fill="#f9fafb">.ps1</tspan> → powershell -ex bypass</text>
+      <text x="36" y="302"><tspan font-family="monospace" fill="#f9fafb">.bat / .cmd</tspan> → cmd.exe</text>
+      <text x="36" y="324">Fetchers:</text>
+      <text x="36" y="342"><tspan font-family="monospace" fill="#f9fafb">curl.exe -fs -o</tspan></text>
+      <text x="36" y="360"><tspan font-family="monospace" fill="#f9fafb">certutil.exe -urlcache -split</tspan></text>
+      <text x="36" y="384">COM: <tspan font-family="monospace" fill="#f9fafb">IShellDispatch</tspan></text>
+    </g>
+  </g>
+
+  <!-- Merge arrows down to exfil -->
+  <path d="M220 1636 L220 1770 L600 1770 L600 1794" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  <path d="M600 1756 L600 1794" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  <path d="M980 1756 L980 1770 L600 1770" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  <polygon points="594,1794 606,1794 600,1808" fill="#94a3b8"/>
+
+  <!-- Node 9: Compress + exfil -->
+  <g transform="translate(260,1816)" filter="url(#shadow)">
+    <rect width="680" height="76" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="76" rx="3" fill="url(#s4)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">Compress + exfiltrate</text>
+    <text x="24" y="54" font-size="12.5" fill="#cbd5e1"><tspan font-family="monospace" fill="#f9fafb">RtlCompressBuffer</tspan> → <tspan font-family="monospace" fill="#f9fafb">WinHttpSendRequest</tspan> → <tspan font-family="monospace" fill="#f9fafb">POST / HTTPS:443</tspan></text>
+  </g>
+  <path d="M600 1892 L600 1919" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Node 10: C2 fallbacks -->
+  <g transform="translate(220,1927)" filter="url(#shadow)">
+    <rect width="760" height="110" rx="14" fill="#0b1221" stroke="#1f2937"/>
+    <rect width="6" height="110" rx="3" fill="url(#s4)"/>
+    <text x="24" y="30" font-size="15" font-weight="700" fill="#f8fafc">C2 fallback chain</text>
+    <g font-size="12.5" font-family="monospace">
+      <rect x="24" y="46" width="224" height="46" rx="8" fill="#111827" stroke="#7c3aed"/>
+      <text x="136" y="68" text-anchor="middle" fill="#ddd6fe" font-weight="700">dtapi.cc</text>
+      <text x="136" y="84" text-anchor="middle" fill="#a78bfa">HTTPS 443 · XOR 0x8d</text>
+
+      <rect x="268" y="46" width="224" height="46" rx="8" fill="#111827" stroke="#7c3aed"/>
+      <text x="380" y="68" text-anchor="middle" fill="#ddd6fe" font-weight="700">x1zsp.cc</text>
+      <text x="380" y="84" text-anchor="middle" fill="#a78bfa">HTTPS 443 · XOR 0xe5</text>
+
+      <rect x="512" y="46" width="224" height="46" rx="8" fill="#111827" stroke="#7c3aed"/>
+      <text x="624" y="68" text-anchor="middle" fill="#ddd6fe" font-weight="700">cfmlapi.cc</text>
+      <text x="624" y="84" text-anchor="middle" fill="#a78bfa">HTTPS 443 · XOR 0xd9</text>
+    </g>
+    <text x="24" y="104" font-size="11.5" fill="#94a3b8">Campaign / botnet UUID in every message: <tspan font-family="monospace" fill="#cbd5e1">01a12b22-5ca2-7f90-849a-8304fc081a08</tspan></text>
+  </g>
+
+  <!-- Footer -->
+  <text x="600" y="2050" text-anchor="middle" font-size="11" fill="#64748b">Rendered 2026-10-22 · Family: geaix.geaix-1.0.24 · 3 stages, no on-disk Stage-3 artefact</text>
+</svg>

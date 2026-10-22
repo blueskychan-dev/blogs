@@ -1,7 +1,67 @@
 {
-  "generatedAt": "2026-10-22T23:04:40.822Z",
-  "count": 11,
+  "generatedAt": "2026-10-22T23:20:45.298Z",
+  "count": 13,
   "blogs": [
+    {
+      "slug": "mrbeastttt-th",
+      "path": "posts/mrbeastttt-th.md",
+      "title": "[RE/DFIR] “โดนได้ไงวะ” Discord กับ IG โดนยึดไปสแปม MrBeast เลยแกะ Malware ย้อนกลับจนเห็นไส้",
+      "desc": "ไม่ได้โหลดโปรแกรมเถื่อน ไม่ได้วางคำสั่งจาก CAPTCHA ปลอม แต่โดนจาก VS Code Extension ของ AI ช่วยเขียนโค้ดปลอม ติดตั้งวันที่ 11 แต่บัญชีเพิ่งโดนเอาไปใช้วันที่ 19 มาเล่าไทม์ไลน์ โดนขโมยอะไรไปบ้าง และแกะโครงสร้าง 3 ชั้นของมันแบบละเอียด",
+      "date": "10-21-2026",
+      "lang": "th",
+      "cover": "/mrbeast/operation-thumbnail.png",
+      "alt_lang": "en",
+      "alt_slug": "mrbeastttt",
+      "tags": [
+        "ReverseEngineering",
+        "DFIR",
+        "MalwareAnalysis",
+        "Infostealer",
+        "CyberSecurity"
+      ],
+      "assets": [
+        "/mrbeast/attack-flow.png",
+        "/mrbeast/censys-shared-host.png",
+        "/mrbeast/discord-devices.png",
+        "/mrbeast/discord-dm-scam.png",
+        "/mrbeast/discord-ignored-list.png",
+        "/mrbeast/exit-scam-meme.png",
+        "/mrbeast/ig-dm-scam.png",
+        "/mrbeast/ig-story-scam.png",
+        "/mrbeast/isolated-lan-setup.png",
+        "/mrbeast/operation-thumbnail.png"
+      ]
+    },
+    {
+      "slug": "mrbeastttt",
+      "path": "posts/mrbeastttt.md",
+      "title": "[RE/DFIR] My Discord and Instagram Got Hijacked for the MrBeast Scam, So I Took the Malware Apart",
+      "desc": "No cracked .exe, no fake CAPTCHA. A fake AI coding extension for VS Code stole my sessions on October 11, and the accounts were only abused 8 days later. The timeline, what it stole, and a full reverse-engineering breakdown of all three stages.",
+      "date": "10-21-2026",
+      "lang": "en",
+      "cover": "/mrbeast/operation-thumbnail.png",
+      "alt_lang": "th",
+      "alt_slug": "mrbeastttt-th",
+      "tags": [
+        "ReverseEngineering",
+        "DFIR",
+        "MalwareAnalysis",
+        "Infostealer",
+        "CyberSecurity"
+      ],
+      "assets": [
+        "/mrbeast/attack-flow.png",
+        "/mrbeast/censys-shared-host.png",
+        "/mrbeast/discord-devices.png",
+        "/mrbeast/discord-dm-scam.png",
+        "/mrbeast/discord-ignored-list.png",
+        "/mrbeast/exit-scam-meme.png",
+        "/mrbeast/ig-dm-scam.png",
+        "/mrbeast/ig-story-scam.png",
+        "/mrbeast/isolated-lan-setup.png",
+        "/mrbeast/operation-thumbnail.png"
+      ]
+    },
     {
       "slug": "writeup-ntz48",
       "path": "posts/writeup-ntz48.md",
