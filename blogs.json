@@ -1,18 +1,7 @@
 {
-  "generatedAt": "2026-06-14T14:26:27.153Z",
-  "count": 12,
+  "generatedAt": "2026-10-22T23:04:19.683Z",
+  "count": 11,
   "blogs": [
-    {
-      "slug": "discordsucksass",
-      "path": "posts/discordsucksass.md",
-      "title": "My main discord account got suspended, forever...",
-      "desc": "I love thier AI moderation.",
-      "date": "04-10-2026",
-      "tags": [
-        "Personal Problem"
-      ],
-      "assets": []
-    },
     {
       "slug": "writeup-ntz48",
       "path": "posts/writeup-ntz48.md",
