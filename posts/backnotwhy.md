@@ -16,7 +16,7 @@ This website is back but with different name but why?
 A month ago, my domain **blueskychan.dev** expired, and unfortunately, I was going through a tough financial time, which meant I couldn’t afford to renew it. That’s why you might have noticed I switched to using **mind.notmycode.dev** for a while.
 
 Yesterday, I decided to try renewing **blueskychan.dev** through my Namecheap dashboard, but to my surprise, I couldn’t find my domain anywhere.  
-![Where did it go?](/abcdefg/lost.png)
+![Where did it go?](/abcdefg/lost.avif)
 
 It seems like I’ll need to contact Namecheap support to recover it. Wish me luck!
 

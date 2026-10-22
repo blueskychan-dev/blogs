@@ -3,7 +3,7 @@ title: "[RE/DFIR] “โดนได้ไงวะ” Discord กับ IG โ�
 desc: "ไม่ได้โหลดโปรแกรมเถื่อน ไม่ได้วางคำสั่งจาก CAPTCHA ปลอม แต่โดนจาก VS Code Extension ของ AI ช่วยเขียนโค้ดปลอม ติดตั้งวันที่ 11 แต่บัญชีเพิ่งโดนเอาไปใช้วันที่ 19 มาเล่าไทม์ไลน์ โดนขโมยอะไรไปบ้าง และแกะโครงสร้าง 3 ชั้นของมันแบบละเอียด"
 date: "10-21-2026"
 lang: "th"
-cover: "/mrbeast/operation-thumbnail.png"
+cover: "/mrbeast/operation-thumbnail.jpg"
 alt_lang: "en"
 alt_slug: "mrbeastttt"
 tags:
@@ -35,7 +35,7 @@ tags:
 
 > **ขอบอกไว้ก่อน:** นี่เป็นแค่ *หนึ่ง* ในหลายวิธีที่สแปม MrBeast แพร่ออกไปนะคะ ไม่ใช่ว่าสแปม MrBeast หรือ Session Stealer ทุกตัวจะทำงานแบบนี้ ตัวขโมยข้อมูลมีเยอะมาก มาได้จากไฟล์และแอปทุกรูปแบบ ในเครื่องทุกแบบ แต่ตอนจบเหมือนกันหมดคือ Session โดนขโมยแล้วบอทเอาไปสแปมเพื่อน ตัวนี้คือตัวที่เราโดนมา แล้วพอแกะดูแล้วมันน่าสนใจมาก เลยเอามาเล่าให้ฟังค่ะ
 
-![โน้ตบุ๊กที่เปิดรายงาน Forensic อยู่ ข้างหลังคือเครื่อง Windows ที่ติดไวรัส](/mrbeast/operation-thumbnail.png)
+![โน้ตบุ๊กที่เปิดรายงาน Forensic อยู่ ข้างหลังคือเครื่อง Windows ที่ติดไวรัส](/mrbeast/operation-thumbnail.avif)
 
 ---
 
@@ -45,28 +45,28 @@ tags:
 
 1. **บัญชี Discord หลัก (`mindhas403` / `MindyGoesBye :3`):** ส่งรูปภาพปลอม 4 รูปโปรโมตเว็บพนันคริปโตที่แอบอ้างชื่อ MrBeast แจกเงิน `$3,500` / `$3,700` (`basoowin.com` โค้ด `TAKE`) เข้าไปใน DM ของเพื่อนๆ
 
-![บัญชี Discord ของเราส่งสแปม MrBeast เข้าแชทส่วนตัวของเพื่อน](/mrbeast/discord-dm-scam.png)
+![บัญชี Discord ของเราส่งสแปม MrBeast เข้าแชทส่วนตัวของเพื่อน](/mrbeast/discord-dm-scam.avif)
 
 2. **บัญชี Instagram (`MindTheNerd :3` / `mindhas403`):** ส่งลิงก์ `famopex.com` เข้าไปในแชทของเพื่อน และเอาภาพโปรโมต MrBeast แจกโบนัส `$2,500` (`Famopex.com` โค้ด `GIFT`) ไปโพสต์ลง Story ของบัญชี
 
-![บัญชี Instagram ของเราส่งลิงก์ famopex.com เข้าแชทเพื่อน](/mrbeast/ig-dm-scam.png)
+![บัญชี Instagram ของเราส่งลิงก์ famopex.com เข้าแชทเพื่อน](/mrbeast/ig-dm-scam.avif)
 
-![บัญชี Instagram ของเราโพสต์ Story สแกม MrBeast](/mrbeast/ig-story-scam.png)
+![บัญชี Instagram ของเราโพสต์ Story สแกม MrBeast](/mrbeast/ig-story-scam.avif)
 
-![มีม: "Withdrawal Failed! Mr. Beast Exit Scam" กับหน้าโอน 2700 USDT ที่ขึ้นว่า Failed](/mrbeast/exit-scam-meme.png)
+![มีม: "Withdrawal Failed! Mr. Beast Exit Scam" กับหน้าโอน 2700 USDT ที่ขึ้นว่า Failed](/mrbeast/exit-scam-meme.avif)
 > ส่วนนี่คือตอนจบของคนที่หลงไปสมัครแล้วกดถอน "โบนัส" ค่ะ 555
 
 3. พอเราเปิดหน้า **Devices** ในตั้งค่า Discord ตอนเวลา **16:59 น.** (หลังเกิดเหตุ 2 นาที) ก็พบว่ามี Session แปลกปลอมล็อกอินเข้ามาในบัญชีจาก 2 ประเทศ:
    - `Windows · Chrome` — **Los Angeles, California, United States** (*ไม่ถึงชั่วโมงที่ผ่านมา*)
    - `Windows · Discord Client` — **Cologne, North Rhine-Westphalia, Germany** (*ไม่ถึงชั่วโมงที่ผ่านมา*)
 
-![Session แปลกปลอมจากอเมริกาและเยอรมนีในบัญชี Discord ของเรา](/mrbeast/discord-devices.png)
+![Session แปลกปลอมจากอเมริกาและเยอรมนีในบัญชี Discord ของเรา](/mrbeast/discord-devices.avif)
 
 ### พฤติกรรมของบอทสแปม MrBeast: ส่งเรียง A–Z แล้วจับยัด Ignore เพื่อปิดแจ้งเตือน
 
 ระหว่างที่นั่งเตะ Session ออกแล้วไล่เช็คความเสียหาย เราก็เห็นว่าบอทตัวนี้มันแอบซ่อนตัวจากเจ้าของบัญชีแบบเนียนมากค่ะ:
 
-![รายชื่อเพื่อน 36 คนที่ถูกบอทจับยัดเข้า Ignored accounts เรียงตามตัวอักษร](/mrbeast/discord-ignored-list.png)
+![รายชื่อเพื่อน 36 คนที่ถูกบอทจับยัดเข้า Ignored accounts เรียงตามตัวอักษร](/mrbeast/discord-ignored-list.avif)
 
 1. ตัวบอทจะดึงรายชื่อเพื่อน (Friend List) ทั้งหมดมา**เรียงตามตัวอักษร A ถึง Z** แล้วไล่ส่งข้อความสแปม MrBeast ทีละคน
 2. ทันทีที่ส่งหาเพื่อนคนไหนเสร็จ **บอทจะกดเพิ่มเพื่อนคนนั้นเข้า `Ignored accounts` (เพิกเฉยบัญชี) ทันที** (ในรูปคือโดนบอทกด Ignore ไป 36 คนก่อนที่เราจะเตะมันออกทัน) สาเหตุที่มันทำแบบนี้เพราะเมื่อเรา Ignore ใครใน Discord แชทของคนนั้นจะถูกซ่อนและไม่เด้งแจ้งเตือนขึ้นมาเลย เวลาเพื่อนทักกลับมาถามว่า *"โดนแฮกหรือเปล่า?"* เราจะไม่เห็นแจ้งเตือนอะไรทั้งสิ้น
@@ -104,7 +104,7 @@ CreationTime           LastWriteTime          Length   FullName
 
 ก่อนจะเริ่มค้นอะไรในเครื่อง Windows ที่ติด สิ่งแรกที่ทำคือ **ตัดเน็ตเครื่องนั้นออกก่อน** เพราะอย่างที่จะเห็นใน Stage 1 กับ Stage 3 ข้างล่าง ตัว Malware ส่งรายชื่อ Process ทั้งหมดในเครื่อง (`Win32_Process`) กลับไปหาเซิร์ฟเวอร์คนร้ายทุกๆ 3 วินาทีเป็นเวลา 15 นาทีหลังรันทุกครั้ง (และมันรันใหม่ทุกครั้งที่เปิด Editor) แถมยังรับคำสั่งให้โหลดโปรแกรมอื่นมารันเพิ่มได้ ถ้าปล่อยให้ต่อเน็ตอยู่ระหว่างที่เราไล่แกะ คนร้ายจะเห็นว่าเรากำลังทำอะไร และจะส่งอะไรมาเพิ่มก็ได้ค่ะ
 
-![สาย LAN เส้นเดียวจากอแดปเตอร์ USB-C ของโน้ตบุ๊ก Linux เสียบตรงเข้าเครื่อง Windows ที่ติดไวรัส](/mrbeast/isolated-lan-setup.png)
+![สาย LAN เส้นเดียวจากอแดปเตอร์ USB-C ของโน้ตบุ๊ก Linux เสียบตรงเข้าเครื่อง Windows ที่ติดไวรัส](/mrbeast/isolated-lan-setup.avif)
 
 วิธีที่ใช้:
 1. ถอดเน็ตเครื่อง Windows 11 (`YuriPC-Win11`) ออก
@@ -125,7 +125,7 @@ CreationTime           LastWriteTime          Length   FullName
 - **Stage 2 (`javaw.exe` + `jli.dll`):** ใช้ไฟล์ `javaw.exe` ของแท้ที่มีลายเซ็นดิจิทัลถูกต้องของ **Eclipse Adoptium Temurin OpenJDK** (`50,344` ไบต์) มาทำ **DLL Side-Loading** โหลดไฟล์ `jli.dll` ปลอม (`736,256` ไบต์ ชื่อในตาราง Export คือ `loader.dll`) ซึ่งถูกทำให้อ่านยากด้วยเทคนิค Control-Flow Flattening (CFF) แล้วจำลองการโหลดไฟล์ PE ของ Stage 3 ลงในหน่วยความจำก้อนเดียวที่เป็น RWX
 - **Stage 3 (`build.dll`):** ไฟล์ PE64 DLL (ขนาด `607,744` ไบต์เมื่อประกอบกลับ, `SizeOfImage` `0x9b000`) ที่ถูกเก็บไว้ใน `jli.dll` เป็นข้อความเข้ารหัส แล้วถอดออกมาไว้ใน RAM เท่านั้น (ตัวอักษร 64 ตัวแบบ Custom + LZ77) ทำหน้าที่ตรวจจับ VM, เช็คภาษาเครื่องเพื่อเว้นประเทศกลุ่มรัสเซีย/CIS, เจาะระบบป้องกัน Chrome `v20` App-Bound Encryption ผ่านการสร้าง Hidden Desktop แล้วทำ Thread Hijacking, ขโมยข้อมูลเบราว์เซอร์/Discord/Steam/Roblox, รับคำสั่งรันไฟล์เสริม และดักสลับเลขกระเป๋าคริปโตใน Clipboard ทุกๆ 300ms
 
-![แผนผังการทำงานแบบละเอียดของ Geaix VS Code Extension Malware](/mrbeast/attack-flow.png)
+![แผนผังการทำงานแบบละเอียดของ Geaix VS Code Extension Malware](/mrbeast/attack-flow.avif)
 
 ---
 
@@ -427,7 +427,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 - 7 โดเมนนั้นมีหน้า `/dashboard/editor` และ Endpoint `/api/vscode/software/pick` ตัวเดียวกับที่ Extension ของ Geaix ใช้ดึงตัวขโมยข้อมูลมา ซึ่งตอบกลับเป็น `403` (ต้องมี Token ที่ล็อกอินแล้ว) ไม่ใช่ `404` แปลว่า Route นี้มีอยู่จริง
 - `opnzy.com` ชี้มาที่เซิร์ฟเวอร์เดียวกัน แต่ตอนนี้ขึ้นแค่ "Not found"
 
-![ผลค้นหา 64.204.180.86 ใน Censys เจอ geaix.com กับเว็บ AI อื่นๆ อยู่บนเซิร์ฟเวอร์เดียวกัน](/mrbeast/censys-shared-host.png)
+![ผลค้นหา 64.204.180.86 ใน Censys เจอ geaix.com กับเว็บ AI อื่นๆ อยู่บนเซิร์ฟเวอร์เดียวกัน](/mrbeast/censys-shared-host.avif)
 > เซิร์ฟเวอร์เดียวที่ Frankfurt แต่มีเครื่องมือ AI "คนละตัว" ตั้ง 9 เว็บ
 
 เราไม่ได้สมัครหรือโหลด Extension จากเว็บพวกนั้นมานะคะ เลยยืนยันไม่ได้ว่าทุกเว็บปล่อยตัวขโมยตัวเดียวกัน แต่เซิร์ฟเวอร์เดียวกัน เว็บเดียวกัน API มัลแวร์ตัวเดียวกัน ต่างกันแค่ชื่อ จะบอกว่าบังเอิญก็ยากแล้วค่ะ ดูเหมือนเป็นกลุ่มเดียวที่ปั๊ม "เครื่องมือ AI ตัวใหม่" ออกมาเป็นล็อต พอชื่อนึงโดนแจ้ง ชื่อต่อไปก็รออยู่แล้ว นี่ก็เป็นอีกเหตุผลที่เราคิดว่าเป็นทีมค่ะ

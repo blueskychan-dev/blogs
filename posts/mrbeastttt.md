@@ -3,7 +3,7 @@ title: "[RE/DFIR] My Discord and Instagram Got Hijacked for the MrBeast Scam, So
 desc: "No cracked .exe, no fake CAPTCHA. A fake AI coding extension for VS Code stole my sessions on October 11, and the accounts were only abused 8 days later. The timeline, what it stole, and a full reverse-engineering breakdown of all three stages."
 date: "10-21-2026"
 lang: "en"
-cover: "/mrbeast/operation-thumbnail.png"
+cover: "/mrbeast/operation-thumbnail.jpg"
 alt_lang: "th"
 alt_slug: "mrbeastttt-th"
 tags:
@@ -37,7 +37,7 @@ This post has two halves. The first half (what happened, what got stolen, what y
 
 > **Heads up:** this is just *one* way the MrBeast scam spreads. Not every MrBeast spam or session stealer works like this. There are tons of different stealers, delivered through all kinds of files and apps, on every kind of machine. They all end the same way, though: your session gets stolen and a bot spams your friends. This one is the one that got me, and it turned out to be really interesting to take apart, so here it is.
 
-![My laptop with the forensic report open, the infected Windows PC behind it](/mrbeast/operation-thumbnail.png)
+![My laptop with the forensic report open, the infected Windows PC behind it](/mrbeast/operation-thumbnail.avif)
 
 ---
 
@@ -47,28 +47,28 @@ On **October 19, 2026 around 4:57 PM (UTC+7)**, my accounts suddenly started sen
 
 1. **Discord (`mindhas403` / `MindyGoesBye :3`):** Sent four fake screenshots promoting a `$3,500` / `$3,700` MrBeast crypto casino giveaway (`basoowin.com`, promo code `TAKE`) into my friends' DMs.
 
-![My Discord account sending the MrBeast scam into a friend's DM](/mrbeast/discord-dm-scam.png)
+![My Discord account sending the MrBeast scam into a friend's DM](/mrbeast/discord-dm-scam.avif)
 
 2. **Instagram (`MindTheNerd :3` / `mindhas403`):** Sent phishing links (`famopex.com`) to friends via DM and posted a fake MrBeast `$2,500` giveaway story (`Famopex.com`, promo code `GIFT`).
 
-![My Instagram account sending famopex.com in DMs](/mrbeast/ig-dm-scam.png)
+![My Instagram account sending famopex.com in DMs](/mrbeast/ig-dm-scam.avif)
 
-![My Instagram account posting a fake MrBeast giveaway story](/mrbeast/ig-story-scam.png)
+![My Instagram account posting a fake MrBeast giveaway story](/mrbeast/ig-story-scam.avif)
 
-![Meme: "Withdrawal Failed! Mr. Beast Exit Scam" next to a failed 2700 USDT transfer](/mrbeast/exit-scam-meme.png)
+![Meme: "Withdrawal Failed! Mr. Beast Exit Scam" next to a failed 2700 USDT transfer](/mrbeast/exit-scam-meme.avif)
 > And this is how it ends if you actually sign up and try to withdraw that "bonus" :trollface:
 
 3. Checking Discord's **Devices** tab two minutes later at **4:59 PM**, I found two unauthorized sessions:
    - `Windows · Chrome` — **Los Angeles, California, United States** (*less than an hour ago*)
    - `Windows · Discord Client` — **Cologne, North Rhine-Westphalia, Germany** (*less than an hour ago*)
 
-![Suspicious Discord sessions from Los Angeles and Cologne](/mrbeast/discord-devices.png)
+![Suspicious Discord sessions from Los Angeles and Cologne](/mrbeast/discord-devices.avif)
 
 ### How the Automated Discord Spam Bot Hides Its Tracks
 
 While I was kicking the sessions out and checking the damage, I noticed some pretty sneaky stuff the bot does once it logs in with a stolen token:
 
-![36 ignored accounts in my Discord settings after the bot ran](/mrbeast/discord-ignored-list.png)
+![36 ignored accounts in my Discord settings after the bot ran](/mrbeast/discord-ignored-list.avif)
 
 1. The bot enumerates your Friend List sorted **alphabetically (A to Z)** and sends the four MrBeast images to each friend.
 2. Immediately after messaging a friend, **the bot adds that friend to your `Ignored accounts` list** (`36 ignored accounts` in my screenshot before I killed the session). By ignoring every recipient, Discord suppresses their reply notifications and hides the DM thread from your main view — so when your friends reply asking if you got hacked, you never see a notification.
@@ -106,7 +106,7 @@ I can't see what happened on the attacker's side between October 11 and October 
 
 First thing before touching anything: unplug the internet. As the Stage 1 and Stage 3 sections below show, this malware sends a list of every running process to its server every 3 seconds for 15 minutes after each launch (and it relaunches every time the editor opens), and it can download and run more programs whenever its server tells it to. If the PC stayed online while I was digging through it, the operator could see what I was doing and push something new.
 
-![A single Ethernet cable from my Linux laptop's USB-C adapter into the infected Windows PC](/mrbeast/isolated-lan-setup.png)
+![A single Ethernet cable from my Linux laptop's USB-C adapter into the infected Windows PC](/mrbeast/isolated-lan-setup.avif)
 
 The setup:
 1. I unplugged the Windows 11 desktop (`YuriPC-Win11`) from the internet.
@@ -127,7 +127,7 @@ Okay, nerd time. The whole thing has three stages, and the point of all of them 
 - **Stage 2 (`javaw.exe` + `jli.dll`):** A legitimate, signed **Eclipse Adoptium Temurin OpenJDK** `javaw.exe` (`50,344` bytes) used to DLL-side-load a malicious unsigned `jli.dll` (`736,256` bytes, internal PE export name `loader.dll`). `jli.dll` is obfuscated with control-flow flattening (CFF) and reflectively maps Stage 3 into a single RWX memory region.
 - **Stage 3 (`build.dll`):** A PE64 DLL (`607,744` bytes once rebuilt, `SizeOfImage` `0x9b000`) stored inside `jli.dll` as encoded text and decoded straight into RAM (custom 64-character alphabet + LZ77). It implements anti-VM checks, a CIS/post-Soviet locale killswitch, a hidden-desktop thread-hijacking bypass for Chrome `v20` App-Bound Encryption, Gecko/Discord/Steam/Roblox credential harvesting, a secondary payload runner, and a 300ms cryptocurrency clipboard clipper.
 
-![Full Geaix VS Code Extension Attack Chain Flowchart](/mrbeast/attack-flow.png)
+![Full Geaix VS Code Extension Attack Chain Flowchart](/mrbeast/attack-flow.avif)
 
 ---
 
@@ -431,7 +431,7 @@ That split is how stealer groups usually work: someone builds the stealer, someo
 - Those seven also have the same `/dashboard/editor` page and the same `/api/vscode/software/pick` endpoint the Geaix extension uses to fetch the stealer. It answers `403` (it wants a logged-in token), not `404`, so the route is really there.
 - `opnzy.com` points to the same server but only says "Not found" right now.
 
-![Censys result for 64.204.180.86 listing geaix.com and the other AI-tool domains on the same server](/mrbeast/censys-shared-host.png)
+![Censys result for 64.204.180.86 listing geaix.com and the other AI-tool domains on the same server](/mrbeast/censys-shared-host.avif)
 > One server in Frankfurt, nine "different" AI tools.
 
 I didn't sign up or download extensions from them, so I can't prove every one of them pushes the same stealer. But same server, same site and same malware API with only the name swapped is very hard to explain as a coincidence. It looks like one operation making "new AI tools" in bulk, so when one name gets reported, the next one is already waiting. That's one more reason I think it's a team.

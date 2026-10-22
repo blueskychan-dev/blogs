@@ -16,6 +16,6 @@ It’s simple: I’m using [Utterances](https://utteranc.es), which runs on GitH
 More posts soon (when I’m in the mood 👀).  
 Also, check out my Fedora GNOME setup:
 
-![Fedora GNOME setup](/setup/fedorarice.png)
+![Fedora GNOME setup](/setup/fedorarice.avif)
 
 meow meow, see you in the next post!

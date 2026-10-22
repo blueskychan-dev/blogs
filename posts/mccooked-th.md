@@ -17,16 +17,16 @@ MCTham เคยเป็นเซิฟที่เคยทำด้วย "�
 
 MCTham เป็นเชิฟ "มายคราฟ" ที่ถูกสร้างในช่วงปี 2564 โดย [Phapoom Saksri](https://github.com/blueskychan-dev) (เราเอง) กับ [Kanison Konkla](https://github.com/kanisonpoon)  ในตอนแรกนั้นเซิฟ MCTham มีแผนว่าจะเป็นเซิฟมายคราฟที่จะมี miniganes/smp และมีฐานเป็น pocketmine และเป็นพาร์ทเนอร์กับยูทูปเบอร์อย่างพี่ [ThamTVMaster](https://www.youtube.com/@ThamTvMaster) อย่างไรก็ตามนี่คือรูปในช่วงแรกๆของการทำเซิร์ฟ MCTham ในช่วงปี 2564:
 
-![1](/mctham-archive/1.jpg)
-![1](/mctham-archive/2.jpg)
-![1](/mctham-archive/3.jpg)
+![1](/mctham-archive/1.avif)
+![1](/mctham-archive/2.avif)
+![1](/mctham-archive/3.avif)
 
 > ขอบคุณรูปภาพจากดิสคอร์ด [ThamTVMaster](https://discord.gg/urRKa7S) ด้วยค่ะ <3
 
 อย่างไรก็ตามนี่คือ[ไลฟ์สตรีมแรก](https://www.youtube.com/watch?v=DHFFlpws4Ww)เกี่ยวกับเซิร์ฟ MCTham อย่างไรก็ตามเป็นเรื่องที่น่าสนใจเพราะว่าเซิฟนั้นได้ถูกรู้จักตรงกับวันเกิดของพี่ [ThamTVMaster](https://www.youtube.com/@ThamTvMaster)
 
 MCTham ประสบความสำเร็จในช่วง SMP SS.[1](https://www.youtube.com/watch?v=URXqntLwEPI) และ SS.[2](https://www.youtube.com/watch?v=jYe8J3ML3kI)
-![1](/mctham-archive/ss2-hunter.png)
+![1](/mctham-archive/ss2-hunter.avif)
 
 > รูปภาพมาจากไลฟ์สตรีมในช่วงกิจกรรม Player hunter ใน SS.2
 
@@ -67,7 +67,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 รู้หรือไม่ว่า: หนูเคยจดทะเบียน mctham.net มาก่อนแต่ถูก suspended และหลงลืมไปตามกาลเวลา...
 
-![1](/mctham-archive/mcthamdotnet.png)
+![1](/mctham-archive/mcthamdotnet.avif)
 
 ### MCTham Rewritten Project (โครงการที่ถูกลืม)
 ในช่วงปลายปี 2564 หลังจากที่พี่ [Kanison Konkla](https://github.com/kanisonpoon) ถูกเตะออก หนูก็ได้คุยกับพี่เขาและเริ่มสร้าง Project ใหม่ที่ชื่อว่า "MCTham Rewritten" และเขาก็ตอบตกลง แล้วตอนนั้นมีคนมาร่วมด้วยอย่าง [aitji](https://github.com/aitji) แต่เป็นเรื่องที่เศร้าเพราะว่าเนื่องจากการที่โดน DMCA และดราม่าทั้งหลายทำให้ไม่ได้มีเวลามากเพียงพอและสุดท้ายก็ถูกลืม...
@@ -97,7 +97,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 ในตอนแรกนั้น MCTham ถูกสปอยในดิสของ [ThamTVMaster](https://www.youtube.com/@ThamTvMaster) 
 
-![a](/mctham-archive/hmm.png)
+![a](/mctham-archive/hmm.avif)
 
 คุณรู้หรือไม่ว่าตอนแรก MCTham ได้ใช้ทีมงานเดียวกับ [notmycode](https://notmycode.dev)
 
@@ -140,7 +140,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 - ใช่ 60%
 - ไม่ 40% 
 
-![poll](/mctham-archive/poll.png)
+![poll](/mctham-archive/poll.avif)
 
 และหลังจากที่ [Pakrn c.](https://github.com/bluestar-b) เอา LuckPerms กลับมาเพื่อความยุติธรรมและกระจายของทีมงานเหมือนจะเป็นเรื่องที่ดีแต่มีใครบางคนที่ไม่โอเคกับเรื่องนี้... [Piyadon Chaengchenjai](https://github.com/HariUwU) กับ [Kanison Konkla](https://github.com/kanisonpoon) 
 
@@ -152,24 +152,24 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 หลังจากอัพเดทนี้ [Piyadon Chaengchenjai](https://github.com/HariUwU) เขาค่อนข้างจะโกรธแล้วตัดสินใจออกจากกลุ่มแต่ของที่เขาจะออก...
 
-![a](/mctham-archive/poll.png)
-![a](/mctham-archive/a.png)
-![a](/mctham-archive/aa.png)
-![a](/mctham-archive/aaa.png)
-![a](/mctham-archive/aaaa.png)
+![a](/mctham-archive/poll.avif)
+![a](/mctham-archive/a.avif)
+![a](/mctham-archive/aa.avif)
+![a](/mctham-archive/aaa.avif)
+![a](/mctham-archive/aaaa.avif)
 
 
 > คือเราจะหมายถึงว่าเขาพูดเหมือนไม่ใช่คนทั่วไปอ่ะ ไม่รู้หรือเปล่าว่ามันรู้สึกเบียวแต่ว่ามันรู้สึกแบบนั้นอ่ะ
 
 และหลังจากที่เขาออกจากกลุ่มเราก็ตัดสินใจดูแล MCTham ต่อไปแต่บางครั้งตัว proxy มีปัญหาและดูเหมือนว่า [Piyadon Chaengchenjai](https://github.com/HariUwU) จะหัวเราะกับสิ่งนี้อย่างไรก็ตามเราได้แก้ปัญหาภายใน 10 นาที
 
-![a](/mctham-archive/ego727.png)
-![a](/mctham-archive/ego727-1.png)
-![a](/mctham-archive/ego727-2.png)
+![a](/mctham-archive/ego727.avif)
+![a](/mctham-archive/ego727-1.avif)
+![a](/mctham-archive/ego727-2.avif)
 
 ...Sancho มาไหนวะแต่มันไม่ over ว่ะ
 
-![a](/mctham-archive/femboypp.jpg)
+![a](/mctham-archive/femboypp.avif)
 
 > ขอให้แชทนี้อธิบายดีกว่า
 
@@ -180,14 +180,14 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 แต่ในตอนแรกนั้นเราปฏิเสธเขาแต่เขาอยากได้เซิฟนี้กลับมามากแต่หลังจากที่พูดคุยกันนิดนึงถ้าสมมุติว่าเรายอมให้เขาดูแลต่อโลกจะถูกย้อน/ล้างทิ้งเพราะว่าเขากล่าวหาว่าเราหยุด MCTham ตั้งแต่ย้ายเซิร์ฟไปแล้ว...
 
-![a](/mctham-archive/longdiscord.jpg)
+![a](/mctham-archive/longdiscord.avif)
 
 และเขาก็เพิ่มเราเข้าไปในกลุ่มส่วนตัวแล้วบ่นเรื่องที่โดนเผาบ้านแล้วก็ [Pakrn c.](https://github.com/bluestar-b) ใช้คำสั่งโกงให้ตัวเองและอื่นๆแต่เนื่องจากข้อมูลบางข้อมูลไม่มีประโยชน์ทำให้ขอตัดออกจากการใส่ไปไหน blog นี้ เราจะโชว์ข้อมูลแค่ที่มาส่งผลต่อผู้เล่นทุกคนเท่านั้น
 
 หลังจากที่เขาพูดถึงเรื่อง "your data is not right" และยืนยันว่าจะล้างโลกหรือย้อนโลกกลับไปและเราก็ถามเรื่อง "ความรับผิดชอบ" ว่าพี่เขาจะรับผิดชอบกับไอเทมที่หายไปหรือสิ่งก่อสร้างที่หายไปอย่างไร
 
-![abc](/mctham-archive/abc.png)
-![abc](/mctham-archive/abc1.png)
+![abc](/mctham-archive/abc.avif)
+![abc](/mctham-archive/abc1.avif)
 
 > จำไว้ว่า "destroy by gamemode" หมายถึงบ้านของพี่เขาโดนทำลายโดยใช้ gamemode creative 
 
@@ -195,7 +195,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 และวันต่อมาเขาพูดแบบนี้...
 
-![war](/mctham-archive/war.png)
+![war](/mctham-archive/war.avif)
 
 หลังจากที่พูดกันในห้องคุยแล้วเขาบอกว่า "ไม่มีใครเป็นเจ้าของ MCTham ทั้งสิ้น" แต่อย่างไรก็ตามไม่เป็นเรื่องที่น่าแปลกใจเพราะว่าไม่มีใครพูดถึงเรื่องนี้เลยเพราะว่า
 
@@ -208,7 +208,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 ไม่กี่วันผ่านไปหลังจากที่คุยกับ [Pakrn c.](https://github.com/bluestar-b) แล้วก็ [Pannarat Wiriyaarritham](https://github.com/PannaratWiriyaarritham) เราตัดสิ่งใจในการทำ agreement แต่ไม่รู้เหมือนมันจะไม่มีความยุติธรรมเท่าไหร่ แต่ข้อสัญญาอันนี้เพื่อให้พี่ [Piyadon Chaengchenjai](https://github.com/HariUwU) สามารถดูแล MCTham ได้แต่มีบางอย่างที่ไม่มีใครคาดฝันเกิดขึ้น...
 
-![a](/mctham-archive/cook-myself.png)
+![a](/mctham-archive/cook-myself.avif)
 
 อย่างไรก็ตามเขาจะไม่ช่วยเราในการเข้าสาขา IT ถ้าสมมุติเราไม่แก้ไข agreement
 
@@ -242,19 +242,19 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 ก่อนหน้านี้ [Warathep Panthongkham](https://github.com/UnitieG)ได้บ่นปัญหาเรื่องปัญหาของเซิฟว่าหน่วงอะไรแบบนี้แล้วก็..
 
-![ego](/mctham-archive/ego.png)
+![ego](/mctham-archive/ego.avif)
 
 > เราดูมันเหมือนจะอีโก้สูงไปหน่อยอ่ะ
 
 แล้วก็ [Warathep Panthongkham](https://github.com/UnitieG)โดนแบนเพราะจับได้ว่าใช้โปรแกรมช่วยเล่น แต่คำพูดมันดูเหมือนแบบ
 
-![ego2](/mctham-archive/ego2.png)
+![ego2](/mctham-archive/ego2.avif)
 
 > เขาไม่พูดมากแล้วกันดูด้วยตาตัวเองแล้วกัน
 
 แล้วพี่ [Piyadon Chaengchenjai](https://github.com/HariUwU) ล่ะ?
 
-![kick](/mctham-archive/kick.png)
+![kick](/mctham-archive/kick.avif)
 
 > โดนเตะออกจาก [notmycode](https://notmycode.dev) 
 
@@ -279,10 +279,10 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 อย่างไรก็ตามนี่คือรูปภาพจากเซิฟ Deeka MC ถ้าคุณอยากเห็นอ่ะนะ
 
-![deeka-lobby](/mctham-archive/deeka.png)
+![deeka-lobby](/mctham-archive/deeka.avif)
 > Deeka Lobby
 
-![deeka-lobby](/mctham-archive/deeka-smp.png)
+![deeka-lobby](/mctham-archive/deeka-smp.avif)
 > Deeka SMP
 
 ในตอนนี้ DeekaMC มี Knockback FFA และ SMP และ lobby ที่สวยงามที่สร้างโดย [Pakrn c.](https://github.com/bluestar-b) แล้วก็เรามีแผนที่จะโปรโมตเซิฟนี้ใน facebook และ platform อื่นๆอย่างไรก็ตามเราได้ให้พี่ [ThamTVMaster](https://www.youtube.com/@ThamTvMaster) มาลองเล่นเซิฟเราแล้วใน [live stream](https://www.youtube.com/watch?v=11ApSf55hXE) นี้
@@ -302,7 +302,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 
 ระหว่างที่พี่ [ThamTVMaster](https://www.youtube.com/@ThamTvMaster) กำลังไลฟ์สตรีมเซิฟเราอยู่นั้น [Kanison Konkla](https://github.com/kanisonpoon) ข้อความส่วนตัวมาหาเราว่ามันไม่ค่อยเท่าเทียม
 
-![ok](/mctham-archive/ok.png)
+![ok](/mctham-archive/ok.avif)
 
 อย่างไรก็ตาม geyser ตัวที่จัดการ bedrock ได้แก้ไขปัญหานี้ไปตั้งนานแล้วรวมถึงว่าเราได้ทำการทดสอบเพราะว่าคนในทีมเราเล่น bedrock ด้วยแล้วก็อะไรด้วยแล้วหลังจากที่พี่ [ThamTVMaster](https://www.youtube.com/@ThamTvMaster) ก็ฆ่าได้หลายคนเลย
 
@@ -311,7 +311,7 @@ Fun fact: รู้หรือไม่ว่า MCTham เคยมีปั�
 อย่างไรก็ตามเราได้ทำการทดสอบนับไม่ถ้วนเกี่ยวกับสิ่งนี้แล้วแล้วเราไม่เจอปัญหาเกี่ยวกับ Knockback ใน Geyser มันทำงานได้เหมือนกับใน Java เลย
 
 เราก็เราได้ทำการลบ combat cooldown ออกฝั่ง Java ด้วยเพื่อความเท่าเทียมมากที่สุด
-![giffer](/mctham-archive/kb-ffa-gif.gif)
+![giffer](/mctham-archive/kb-ffa-gif.avif)
 
 ### สรุปคร่าวๆ
 > [Piyadon Chaengchenjai](https://github.com/HariUwU) และ [Kanison Konkla](https://github.com/kanisonpoon) เป็นเจ้าของ MCTham ในตอนนี้แล้วเราก็ไม่รู้ว่าจะไปทิศทางไหน

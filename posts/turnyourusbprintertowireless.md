@@ -20,7 +20,7 @@ I know it’s a bit funny to start with a “How-to” post, but I really hope t
 
 I’ve had my Canon Pixma E410 printer at home for a long time. The ink is expensive, so I asked [@latenightdef](https://pongpeeraw.techtransthai.org) to help me find a shop that could modify it with an ink tank system — and finally, I got it done!
 
-![theprinter](/printer/theprinter.png)
+![theprinter](/printer/theprinter.avif)
 
 Since I already have a self-hosted Linux server nearby (named *miyabidell*), I thought:
 
@@ -30,7 +30,7 @@ Note: the Canon Pixma E410 doesn’t support Wi-Fi. It can only print via USB an
 
 Before we start, let’s unbox it, plug it into the server, and get ready.
 
-![plugtheusb](/printer/plugusb.gif)
+![plugtheusb](/printer/plugusb.avif)
 
 ---
 
@@ -42,7 +42,7 @@ Once your server is powered on, connect the printer and check if it’s detected
 lsusb
 
 
-![lsusb](/printer/lsusb.png)
+![lsusb](/printer/lsusb.avif)
 
 If your printer shows up like this — congrats! Everything is working, and we’re ready to move on.
 
@@ -73,7 +73,7 @@ Once installed, open the CUPS configuration file:
 sudo nano /etc/cups/cupsd.conf
 
 
-![check1](/printer/check1.png)
+![check1](/printer/check1.avif)
 
 Make sure of the following:
 
@@ -101,39 +101,39 @@ http://<server-ip>:631
 
 You should see the CUPS web interface:
 
-![cupswebsite](/printer/cupswebsite.png)
+![cupswebsite](/printer/cupswebsite.avif)
 
 Go to the **Administration** tab → click **Add Printer**.
 
-![admin](/printer/adminpage.png)
+![admin](/printer/adminpage.avif)
 
 If prompted for login credentials, use your server’s username and password (the one with `sudo` privileges).
 
 Next, select your printer and click **Continue**.
 
-![choose1](/printer/choose1.png)
-![choose2](/printer/choose2.png)
+![choose1](/printer/choose1.avif)
+![choose2](/printer/choose2.avif)
 
 Now, name your printer — anything you like — but make sure to **check “Share This Printer.”**
 Without this, the wireless setup won’t work!
 
-![choose3](/printer/choose3.png)
+![choose3](/printer/choose3.avif)
 
 Then, select your printer model and click **Add Printer**.
 
-![done1](/printer/done1.png)
+![done1](/printer/done1.avif)
 
 Optionally, configure your printer’s default settings.
 If everything looks fine, skip ahead.
 
 Click **Printers**, select your printer, and test print.
 
-![select](/printer/select.png)
-![testprint](/printer/testprint.png)
+![select](/printer/select.avif)
+![testprint](/printer/testprint.avif)
 
 If it prints successfully — congrats again!
 
-![testprintresult.png](/printer/testprintresult.png)
+![testprintresult.png](/printer/testprintresult.avif)
 
 ---
 
@@ -147,7 +147,7 @@ First, enable Samba:
 sudo systemctl enable --now smb
 
 
-![enablesmb](/printer/enablesmb.png)
+![enablesmb](/printer/enablesmb.avif)
 
 Then edit the Samba configuration file:
 
@@ -155,7 +155,7 @@ Then edit the Samba configuration file:
 sudo nano /etc/samba/smb.conf
 
 
-![sambaconfig](/printer/sambaconfig.png)
+![sambaconfig](/printer/sambaconfig.avif)
 
 Make sure it looks like the example above, then save and restart Samba:
 

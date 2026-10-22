@@ -9,7 +9,7 @@ tags:
 Hey, Mind here! 👋
 
 I’m proud to announce that **mindhas403.dev** (this website!) has officially moved from **Vercel** to **TechTransThai.org!** 🎉
-![dig](/verceldrama/dig.png)
+![dig](/verceldrama/dig.avif)
 
 
 Now the website points to **Cloudflare proxy → TechTransThai**, not **76.76.21.21** anymore.
@@ -20,8 +20,8 @@ I want to give a huge thanks to [@latenightdef](https://pongpeeraw.techtransthai
 ## But why? What’s wrong with Vercel?
 
 Back on **September 29, 2025**, the CEO of Vercel tweeted something - my friend sent it to me:
-![tg](/verceldrama/tg.png)
-![tg](/verceldrama/twitter.png)
+![tg](/verceldrama/tg.avif)
+![tg](/verceldrama/twitter.avif)
 
 It seems that Vercel’s CEO took a photo showing support for the **Prime Minister of Israel**, and… well, you probably know what’s going on right now - *the war.*
 

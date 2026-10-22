@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T23:21:05.569Z",
+  "generatedAt": "2026-10-22T23:40:30.010Z",
   "count": 13,
   "blogs": [
     {
@@ -9,7 +9,7 @@
       "desc": "ไม่ได้โหลดโปรแกรมเถื่อน ไม่ได้วางคำสั่งจาก CAPTCHA ปลอม แต่โดนจาก VS Code Extension ของ AI ช่วยเขียนโค้ดปลอม ติดตั้งวันที่ 11 แต่บัญชีเพิ่งโดนเอาไปใช้วันที่ 19 มาเล่าไทม์ไลน์ โดนขโมยอะไรไปบ้าง และแกะโครงสร้าง 3 ชั้นของมันแบบละเอียด",
       "date": "10-21-2026",
       "lang": "th",
-      "cover": "/mrbeast/operation-thumbnail.png",
+      "cover": "/mrbeast/operation-thumbnail.jpg",
       "alt_lang": "en",
       "alt_slug": "mrbeastttt",
       "tags": [
@@ -20,16 +20,16 @@
         "CyberSecurity"
       ],
       "assets": [
-        "/mrbeast/attack-flow.png",
-        "/mrbeast/censys-shared-host.png",
-        "/mrbeast/discord-devices.png",
-        "/mrbeast/discord-dm-scam.png",
-        "/mrbeast/discord-ignored-list.png",
-        "/mrbeast/exit-scam-meme.png",
-        "/mrbeast/ig-dm-scam.png",
-        "/mrbeast/ig-story-scam.png",
-        "/mrbeast/isolated-lan-setup.png",
-        "/mrbeast/operation-thumbnail.png"
+        "/mrbeast/attack-flow.avif",
+        "/mrbeast/censys-shared-host.avif",
+        "/mrbeast/discord-devices.avif",
+        "/mrbeast/discord-dm-scam.avif",
+        "/mrbeast/discord-ignored-list.avif",
+        "/mrbeast/exit-scam-meme.avif",
+        "/mrbeast/ig-dm-scam.avif",
+        "/mrbeast/ig-story-scam.avif",
+        "/mrbeast/isolated-lan-setup.avif",
+        "/mrbeast/operation-thumbnail.avif"
       ]
     },
     {
@@ -39,7 +39,7 @@
       "desc": "No cracked .exe, no fake CAPTCHA. A fake AI coding extension for VS Code stole my sessions on October 11, and the accounts were only abused 8 days later. The timeline, what it stole, and a full reverse-engineering breakdown of all three stages.",
       "date": "10-21-2026",
       "lang": "en",
-      "cover": "/mrbeast/operation-thumbnail.png",
+      "cover": "/mrbeast/operation-thumbnail.jpg",
       "alt_lang": "th",
       "alt_slug": "mrbeastttt-th",
       "tags": [
@@ -50,16 +50,16 @@
         "CyberSecurity"
       ],
       "assets": [
-        "/mrbeast/attack-flow.png",
-        "/mrbeast/censys-shared-host.png",
-        "/mrbeast/discord-devices.png",
-        "/mrbeast/discord-dm-scam.png",
-        "/mrbeast/discord-ignored-list.png",
-        "/mrbeast/exit-scam-meme.png",
-        "/mrbeast/ig-dm-scam.png",
-        "/mrbeast/ig-story-scam.png",
-        "/mrbeast/isolated-lan-setup.png",
-        "/mrbeast/operation-thumbnail.png"
+        "/mrbeast/attack-flow.avif",
+        "/mrbeast/censys-shared-host.avif",
+        "/mrbeast/discord-devices.avif",
+        "/mrbeast/discord-dm-scam.avif",
+        "/mrbeast/discord-ignored-list.avif",
+        "/mrbeast/exit-scam-meme.avif",
+        "/mrbeast/ig-dm-scam.avif",
+        "/mrbeast/ig-story-scam.avif",
+        "/mrbeast/isolated-lan-setup.avif",
+        "/mrbeast/operation-thumbnail.avif"
       ]
     },
     {
@@ -74,36 +74,36 @@
         "CyberSecurity"
       ],
       "assets": [
-        "/ntz48/7120network.png",
-        "/ntz48/buildclient.png",
-        "/ntz48/chatgpt.png",
-        "/ntz48/checkpeandrename.png",
-        "/ntz48/client.png",
-        "/ntz48/clientwithdata.png",
-        "/ntz48/command1.png",
-        "/ntz48/command2.png",
-        "/ntz48/command3.png",
-        "/ntz48/current-ranking.png",
-        "/ntz48/decodepassword.png",
-        "/ntz48/failed1.png",
-        "/ntz48/gitandmakeit.png",
-        "/ntz48/github.png",
-        "/ntz48/pastebinacc.png",
-        "/ntz48/pid7120.png",
-        "/ntz48/pid7120object.png",
-        "/ntz48/pkneed.png",
-        "/ntz48/rawpastedata.png",
-        "/ntz48/realname.png",
-        "/ntz48/result1.png",
-        "/ntz48/result10.png",
-        "/ntz48/result2.png",
-        "/ntz48/result3.png",
-        "/ntz48/result4.png",
-        "/ntz48/robloxacc.png",
-        "/ntz48/searchquery.png",
-        "/ntz48/virustotal.png",
-        "/ntz48/vol3confirmed.png",
-        "/ntz48/weirderror.png"
+        "/ntz48/7120network.avif",
+        "/ntz48/buildclient.avif",
+        "/ntz48/chatgpt.avif",
+        "/ntz48/checkpeandrename.avif",
+        "/ntz48/client.avif",
+        "/ntz48/clientwithdata.avif",
+        "/ntz48/command1.avif",
+        "/ntz48/command2.avif",
+        "/ntz48/command3.avif",
+        "/ntz48/current-ranking.avif",
+        "/ntz48/decodepassword.avif",
+        "/ntz48/failed1.avif",
+        "/ntz48/gitandmakeit.avif",
+        "/ntz48/github.avif",
+        "/ntz48/pastebinacc.avif",
+        "/ntz48/pid7120.avif",
+        "/ntz48/pid7120object.avif",
+        "/ntz48/pkneed.avif",
+        "/ntz48/rawpastedata.avif",
+        "/ntz48/realname.avif",
+        "/ntz48/result1.avif",
+        "/ntz48/result10.avif",
+        "/ntz48/result2.avif",
+        "/ntz48/result3.avif",
+        "/ntz48/result4.avif",
+        "/ntz48/robloxacc.avif",
+        "/ntz48/searchquery.avif",
+        "/ntz48/virustotal.avif",
+        "/ntz48/vol3confirmed.avif",
+        "/ntz48/weirderror.avif"
       ]
     },
     {
@@ -117,21 +117,21 @@
         "Linux"
       ],
       "assets": [
-        "/printer/adminpage.png",
-        "/printer/check1.png",
-        "/printer/choose1.png",
-        "/printer/choose2.png",
-        "/printer/choose3.png",
-        "/printer/cupswebsite.png",
-        "/printer/done1.png",
-        "/printer/enablesmb.png",
-        "/printer/lsusb.png",
-        "/printer/plugusb.gif",
-        "/printer/sambaconfig.png",
-        "/printer/select.png",
-        "/printer/testprint.png",
-        "/printer/testprintresult.png",
-        "/printer/theprinter.png",
+        "/printer/adminpage.avif",
+        "/printer/check1.avif",
+        "/printer/choose1.avif",
+        "/printer/choose2.avif",
+        "/printer/choose3.avif",
+        "/printer/cupswebsite.avif",
+        "/printer/done1.avif",
+        "/printer/enablesmb.avif",
+        "/printer/lsusb.avif",
+        "/printer/plugusb.avif",
+        "/printer/sambaconfig.avif",
+        "/printer/select.avif",
+        "/printer/testprint.avif",
+        "/printer/testprintresult.avif",
+        "/printer/theprinter.avif",
         "/printer/wirelesstest.mp4"
       ]
     },
@@ -145,9 +145,9 @@
         "Personal Website"
       ],
       "assets": [
-        "/verceldrama/dig.png",
-        "/verceldrama/tg.png",
-        "/verceldrama/twitter.png"
+        "/verceldrama/dig.avif",
+        "/verceldrama/tg.avif",
+        "/verceldrama/twitter.avif"
       ]
     },
     {
@@ -160,7 +160,7 @@
         "Personal Website"
       ],
       "assets": [
-        "/setup/fedorarice.png"
+        "/setup/fedorarice.avif"
       ]
     },
     {
@@ -214,7 +214,7 @@
         "personal"
       ],
       "assets": [
-        "/abcdefg/lost.png"
+        "/abcdefg/lost.avif"
       ]
     },
     {
@@ -228,33 +228,33 @@
         "minecraft server"
       ],
       "assets": [
-        "/mctham-archive/1.jpg",
-        "/mctham-archive/2.jpg",
-        "/mctham-archive/3.jpg",
-        "/mctham-archive/a.png",
-        "/mctham-archive/aa.png",
-        "/mctham-archive/aaa.png",
-        "/mctham-archive/aaaa.png",
-        "/mctham-archive/abc.png",
-        "/mctham-archive/abc1.png",
-        "/mctham-archive/cook-myself.png",
-        "/mctham-archive/deeka-smp.png",
-        "/mctham-archive/deeka.png",
-        "/mctham-archive/ego.png",
-        "/mctham-archive/ego2.png",
-        "/mctham-archive/ego727-1.png",
-        "/mctham-archive/ego727-2.png",
-        "/mctham-archive/ego727.png",
-        "/mctham-archive/femboypp.jpg",
-        "/mctham-archive/hmm.png",
-        "/mctham-archive/kb-ffa-gif.gif",
-        "/mctham-archive/kick.png",
-        "/mctham-archive/longdiscord.jpg",
-        "/mctham-archive/mcthamdotnet.png",
-        "/mctham-archive/ok.png",
-        "/mctham-archive/poll.png",
-        "/mctham-archive/ss2-hunter.png",
-        "/mctham-archive/war.png"
+        "/mctham-archive/1.avif",
+        "/mctham-archive/2.avif",
+        "/mctham-archive/3.avif",
+        "/mctham-archive/a.avif",
+        "/mctham-archive/aa.avif",
+        "/mctham-archive/aaa.avif",
+        "/mctham-archive/aaaa.avif",
+        "/mctham-archive/abc.avif",
+        "/mctham-archive/abc1.avif",
+        "/mctham-archive/cook-myself.avif",
+        "/mctham-archive/deeka-smp.avif",
+        "/mctham-archive/deeka.avif",
+        "/mctham-archive/ego.avif",
+        "/mctham-archive/ego2.avif",
+        "/mctham-archive/ego727-1.avif",
+        "/mctham-archive/ego727-2.avif",
+        "/mctham-archive/ego727.avif",
+        "/mctham-archive/femboypp.avif",
+        "/mctham-archive/hmm.avif",
+        "/mctham-archive/kb-ffa-gif.avif",
+        "/mctham-archive/kick.avif",
+        "/mctham-archive/longdiscord.avif",
+        "/mctham-archive/mcthamdotnet.avif",
+        "/mctham-archive/ok.avif",
+        "/mctham-archive/poll.avif",
+        "/mctham-archive/ss2-hunter.avif",
+        "/mctham-archive/war.avif"
       ]
     },
     {
@@ -268,33 +268,33 @@
         "minecraft server"
       ],
       "assets": [
-        "/mctham-archive/1.jpg",
-        "/mctham-archive/2.jpg",
-        "/mctham-archive/3.jpg",
-        "/mctham-archive/a.png",
-        "/mctham-archive/aa.png",
-        "/mctham-archive/aaa.png",
-        "/mctham-archive/aaaa.png",
-        "/mctham-archive/abc.png",
-        "/mctham-archive/abc1.png",
-        "/mctham-archive/cook-myself.png",
-        "/mctham-archive/deeka-smp.png",
-        "/mctham-archive/deeka.png",
-        "/mctham-archive/ego.png",
-        "/mctham-archive/ego2.png",
-        "/mctham-archive/ego727-1.png",
-        "/mctham-archive/ego727-2.png",
-        "/mctham-archive/ego727.png",
-        "/mctham-archive/femboypp.jpg",
-        "/mctham-archive/hmm.png",
-        "/mctham-archive/kb-ffa-gif.gif",
-        "/mctham-archive/kick.png",
-        "/mctham-archive/longdiscord.jpg",
-        "/mctham-archive/mcthamdotnet.png",
-        "/mctham-archive/ok.png",
-        "/mctham-archive/poll.png",
-        "/mctham-archive/ss2-hunter.png",
-        "/mctham-archive/war.png"
+        "/mctham-archive/1.avif",
+        "/mctham-archive/2.avif",
+        "/mctham-archive/3.avif",
+        "/mctham-archive/a.avif",
+        "/mctham-archive/aa.avif",
+        "/mctham-archive/aaa.avif",
+        "/mctham-archive/aaaa.avif",
+        "/mctham-archive/abc.avif",
+        "/mctham-archive/abc1.avif",
+        "/mctham-archive/cook-myself.avif",
+        "/mctham-archive/deeka-smp.avif",
+        "/mctham-archive/deeka.avif",
+        "/mctham-archive/ego.avif",
+        "/mctham-archive/ego2.avif",
+        "/mctham-archive/ego727-1.avif",
+        "/mctham-archive/ego727-2.avif",
+        "/mctham-archive/ego727.avif",
+        "/mctham-archive/femboypp.avif",
+        "/mctham-archive/hmm.avif",
+        "/mctham-archive/kb-ffa-gif.avif",
+        "/mctham-archive/kick.avif",
+        "/mctham-archive/longdiscord.avif",
+        "/mctham-archive/mcthamdotnet.avif",
+        "/mctham-archive/ok.avif",
+        "/mctham-archive/poll.avif",
+        "/mctham-archive/ss2-hunter.avif",
+        "/mctham-archive/war.avif"
       ]
     },
     {

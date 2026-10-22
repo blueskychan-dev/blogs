@@ -14,9 +14,9 @@ MCTham is the server that i made with my heart but now... something going wrong.
 ## What is MCTham?
 MCTham is a "Minecraft Server" founded in 2021 by [Phapoom Saksri](https://github.com/blueskychan-dev) and [Kanison Konkla](https://github.com/kanisonpoon) at the time MCTham was planned to be a thai minigames/smp server based on pocketmine and partner with a youtuber [ThamTVMaster](https://www.youtube.com/@ThamTvMaster), MCTham was doing very good when we release. here is few screenshots and picture from 2021:
 
-![1](/mctham-archive/1.jpg)
-![1](/mctham-archive/2.jpg)
-![1](/mctham-archive/3.jpg)
+![1](/mctham-archive/1.avif)
+![1](/mctham-archive/2.avif)
+![1](/mctham-archive/3.avif)
 
 > Thanks picture from [ThamTVMaster discord](https://discord.gg/urRKa7S) <3
 
@@ -24,7 +24,7 @@ This is the [First Ever Live Stream](https://www.youtube.com/watch?v=DHFFlpws4Ww
 
 MCTham was really successful and popular during SS.[1](https://www.youtube.com/watch?v=URXqntLwEPI) and SS.[2](https://www.youtube.com/watch?v=jYe8J3ML3kI)
 
-![1](/mctham-archive/ss2-hunter.png)
+![1](/mctham-archive/ss2-hunter.avif)
 > MCTham Player hunter event in SS2
 
 ### MCTham History (Lore)
@@ -64,7 +64,7 @@ And after few session, MCTham getting problem about downtime (Yea, I can't found
 
 Fun Fact: We used to have a domain called "mctham.net" but I forgot about it for like 2 years lol
 
-![1](/mctham-archive/mcthamdotnet.png)
+![1](/mctham-archive/mcthamdotnet.avif)
 
 ### MCTham Rewritten Project (Forgetten Project)
 Since 2021(Q3) after Kanison Konkla has been kicked, i talk him to make new project "MCTham Rewritten", and he agreed, His invite some of his friend like "[aitji](https://github.com/aitji)" but sadly, due to few drama in current McTham + DMCA drama, we didn't have time and finally, this project...died.
@@ -92,7 +92,7 @@ First, this is my plan about MCTham on 2024
 From this list, everything looks good, alright?...
 
 In first, MCTham SMP has been spoiler in ThamTvMaster Discord
-![a](/mctham-archive/hmm.png)
+![a](/mctham-archive/hmm.avif)
 
 - Did you know? MCTham in 2024 in first use same team with [notmycode!](https://notmycode.dev)
 
@@ -137,7 +137,7 @@ This maybe linked to Previous downfall but let me explain...
 - Yes 60% 3 votes
 - No 40% 2 votes
 
-![poll](/mctham-archive/poll.png)
+![poll](/mctham-archive/poll.avif)
 And [Pakrn c.](https://github.com/bluestar-b) brings luckperms back but someone is NOT OKAY with that... [Piyadon Chaengchenjai](https://github.com/HariUwU) and [Kanison Konkla](https://github.com/kanisonpoon)
 
 But why? Because
@@ -147,24 +147,24 @@ But why? Because
 
 after this update, [Piyadon Chaengchenjai](https://github.com/HariUwU) like ~~communist~~ and uh decide to quit for a while but... before he quit...
 
-![a](/mctham-archive/poll.png)
-![a](/mctham-archive/a.png)
-![a](/mctham-archive/aa.png)
-![a](/mctham-archive/aaa.png)
-![a](/mctham-archive/aaaa.png)
+![a](/mctham-archive/poll.avif)
+![a](/mctham-archive/a.avif)
+![a](/mctham-archive/aa.avif)
+![a](/mctham-archive/aaa.avif)
+![a](/mctham-archive/aaaa.avif)
 
 > I mean, his talking not like normal "person", I don't know this is so cringe or not but i feel like that 
 
 And uh, we decide to manage MCTham with ourself but sometimes proxy server have issues and [Piyadon Chaengchenjai](https://github.com/HariUwU) doing a litte bit of laughing, but however we solved it in 10 mintues
 
-![a](/mctham-archive/ego727.png)
-![a](/mctham-archive/ego727-1.png)
-![a](/mctham-archive/ego727-2.png)
+![a](/mctham-archive/ego727.avif)
+![a](/mctham-archive/ego727-1.avif)
+![a](/mctham-archive/ego727-2.avif)
 
 
 ..Sancho arc is not over.
 
-![a](/mctham-archive/femboypp.jpg)
+![a](/mctham-archive/femboypp.avif)
 > Let this chat explain...
 
 First of all, he want "vanilla" too much... (Did you know? He want to takeover MCTham because he want to turned this to "vanilla" and that is one of reason of previous downfall) (But MCTham is no longer "vanilla" because "[velocity](https://papermc.io/software/velocity)" and "[purpurMC](https://purpurmc.org)")
@@ -175,15 +175,15 @@ and Second, he trusted that him and [Kanison Konkla](https://github.com/kanisonp
 
 But we ignore him but uh, HE WANTS MCTHAM TOO MUCH and we few things happen like we can't transfeter to his server because WE PASUED MCTHAM?
 
-![a](/mctham-archive/longdiscord.jpg)
+![a](/mctham-archive/longdiscord.avif)
 
 And he add me to group chat and explaining like his house got nuked and [Pakrn c.](https://github.com/bluestar-b) using cheating command etc, but this will too long and not much useful, i will show only 
 important infomation is it will afftced to all players
 
 After he talking about "your data is not right" and will confirmed to reverse/reset world, i tell asked him about "responsibility" and here is answer:
 
-![abc](/mctham-archive/abc.png)
-![abc](/mctham-archive/abc1.png)
+![abc](/mctham-archive/abc.avif)
+![abc](/mctham-archive/abc1.avif)
 
 > Keep in mind: message "destroy by gamemode" his meaning house being nuked by using gamemode.
 
@@ -192,7 +192,7 @@ To be fair for everyone, I have full chat about house nuking, player data and et
 
 a day later.... he said this.......
 
-![war](/mctham-archive/war.png)
+![war](/mctham-archive/war.avif)
 
 After few talk in voice chat, he said "no one own mctham" and uh, i don't know about no one tell current mctham is fake because
 
@@ -207,7 +207,7 @@ Few days later...
 After few talks with [Pakrn c.](https://github.com/bluestar-b) and [Pannarat Wiriyaarritham](https://github.com/PannaratWiriyaarritham), i decide to make agreement but it's kinda "unfair" but let [Piyadon Chaengchenjai](https://github.com/HariUwU) can own MCTham under agreement but something going wrong...
 
 
-![a](/mctham-archive/cook-myself.png)
+![a](/mctham-archive/cook-myself.avif)
 
 However, if you see, HE will WON'T help me to apply IT if i still don't edited any "agreement"
 > Tiny explain: I'm decide to apply to same college with [Piyadon Chaengchenjai](https://github.com/HariUwU), however after this drama. I feel i walking wrong way... (I have problem to move from DBT to IT, that why i need his help)
@@ -242,16 +242,16 @@ I talking about how useful /sethome and automatic tree cut but they said: "idc, 
 Did you know? Piyadon Chaengchenjai and Kanison Konkla kinda don't care about pronouns and we just mad a littie bit...
 
 Before this happen, [Warathep Panthongkham](https://github.com/UnitieG) just compain about server performance and uh
-![ego](/mctham-archive/ego.png)
+![ego](/mctham-archive/ego.avif)
 > Kinda "ego" for me, I don't know
 
 And uh, [Warathep Panthongkham](https://github.com/UnitieG) got banned for caught for cheating but uh
 
-![ego2](/mctham-archive/ego2.png)
+![ego2](/mctham-archive/ego2.avif)
 > I will won't explain more but look with yourself
 
 How about Piyadon Chaengchenjai?
-![kick](/mctham-archive/kick.png)
+![kick](/mctham-archive/kick.avif)
 > He got kicked from notmycode
 
 After mixing all drama about both of them and uh, homophobic i guess?
@@ -274,10 +274,10 @@ By doing this, we doing something that MCTham "doesn't" have
 - 3. Anti-grief, luckperms for permission manage and few more to make deeka better than "MCTham"
 
 However, this is few pic from deeka if you want to see:
-![deeka-lobby](/mctham-archive/deeka.png)
+![deeka-lobby](/mctham-archive/deeka.avif)
 > Deeka Lobby
 
-![deeka-lobby](/mctham-archive/deeka-smp.png)
+![deeka-lobby](/mctham-archive/deeka-smp.avif)
 > Deeka SMP
 
 
@@ -299,7 +299,7 @@ However, you think deeka born and someone will **don't** have drama with them? l
 
 While ThamTvMaster stream our server, [Kanison Konkla](https://github.com/kanisonpoon) Direct message to me with this message:
 
-![ok](/mctham-archive/ok.png)
+![ok](/mctham-archive/ok.avif)
 
 However, geyser **already** solved about **unfair** knockback like few months/year ago and we already tested on our side and nothing wrong.
 
@@ -309,7 +309,7 @@ We have done countless testing. There is no issues with Knockback on Geyser. The
 
 There is no advantage if you played on java nor bedrock. Since they both have the same combat experience. (We removed the combat cooldown.)
 
-![giffer](/mctham-archive/kb-ffa-gif.gif)
+![giffer](/mctham-archive/kb-ffa-gif.avif)
 
 ### Summary
 > [Piyadon Chaengchenjai](https://github.com/HariUwU) and [Kanison Konkla](https://github.com/kanisonpoon) owns MCTham for now and we don't know how mctham will going in the futures...
