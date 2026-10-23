@@ -123,7 +123,7 @@ CreationTime           LastWriteTime          Length   FullName
 
 - **Stage 1 (`geaix-1.0.24.vsix` -> `extension/dist/extension.js`):** ตัว Extension ขนาด `36,654,196` ไบต์ที่ถูกดัดแปลง (Fork) มาจากโปรเจค Open-Source จริงอย่าง **Kilo Code** โดยคนร้ายแอบแปะโค้ด JavaScript Dropper ที่ถูก Obfuscate (`qEa` -> `Kgt`, `HEa`, `gdn`, `DEa`) เอาไว้ที่ส่วนท้ายสุดของไฟล์
 - **Stage 2 (`javaw.exe` + `jli.dll`):** ใช้ไฟล์ `javaw.exe` ของแท้ที่มีลายเซ็นดิจิทัลถูกต้องของ **Eclipse Adoptium Temurin OpenJDK** (`50,344` ไบต์) มาทำ **DLL Side-Loading** โหลดไฟล์ `jli.dll` ปลอม (`736,256` ไบต์ ชื่อในตาราง Export คือ `loader.dll`) ซึ่งถูกทำให้อ่านยากด้วยเทคนิค Control-Flow Flattening (CFF) แล้วจำลองการโหลดไฟล์ PE ของ Stage 3 ลงในหน่วยความจำก้อนเดียวที่เป็น RWX
-- **Stage 3 (`build.dll`):** ไฟล์ PE64 DLL (ขนาด `607,744` ไบต์เมื่อประกอบกลับ, `SizeOfImage` `0x9b000`) ที่ถูกเก็บไว้ใน `jli.dll` เป็นข้อความเข้ารหัส แล้วถอดออกมาไว้ใน RAM เท่านั้น (ตัวอักษร 64 ตัวแบบ Custom + LZ77) ทำหน้าที่ตรวจจับ VM, เช็คภาษาเครื่องเพื่อเว้นประเทศกลุ่มรัสเซีย/CIS, เจาะระบบป้องกัน Chrome `v20` App-Bound Encryption ผ่านการสร้าง Hidden Desktop แล้วทำ Thread Hijacking, ขโมยข้อมูลเบราว์เซอร์/Discord/Steam/Roblox, รับคำสั่งรันไฟล์เสริม และดักสลับเลขกระเป๋าคริปโตใน Clipboard ทุกๆ 300ms
+- **Stage 3 (`build.dll`):** ไฟล์ PE64 DLL (ขนาด `607,744` ไบต์เมื่อประกอบกลับ, `SizeOfImage` `0x9b000`) ที่ถูกเก็บไว้ใน `jli.dll` เป็นข้อความเข้ารหัส แล้วถอดออกมาไว้ใน RAM เท่านั้น (ตัวอักษร 64 ตัวแบบ Custom + LZ77) ทำหน้าที่ตรวจจับ VM, เช็คภาษาเครื่องเพื่อเว้นประเทศกลุ่มรัสเซีย/CIS, เจาะระบบป้องกัน Chrome `v20` App-Bound Encryption ผ่านการสร้าง Hidden Desktop แล้วทำ Thread Hijacking, ขโมยข้อมูลเบราว์เซอร์/Discord/Steam/Roblox, รับคำสั่งรันไฟล์เสริม และดักสลับเลขกระเป๋าคริปโตใน Clipboard
 
 ![แผนผังการทำงานแบบละเอียดของ Geaix VS Code Extension Malware](/mrbeast/attack-flow.avif)
 
@@ -133,7 +133,7 @@ CreationTime           LastWriteTime          Length   FullName
 
 ไฟล์ `.vsix` จริงๆ ก็คือ ZIP ธรรมดา เลยแตกไฟล์ `geaix-1.0.24.vsix` (`27,124,774` ไบต์, SHA-256 `02cd28dc0a9c1ee109462aa6942dfbc3bdb1af9210315eaa326e73e49d01ac0d`) ออกมาดูเลย ใน `extension.vsixmanifest` เขียนว่า Publisher คือ `geaix` เวอร์ชัน `1.0.24`
 
-ส่วนหน้าของไฟล์ `extension/dist/extension.js` (`disasm/geaix_pre_tail_deobfuscated.js` ทั้งหมด 76 ฟังก์ชัน) คือโค้ดของปลั๊กอิน **Kilo Code** ของจริงทั้งหมดที่ถูกเปลี่ยนชื่อคำสั่งเป็น `geaix.*` และในไฟล์ `extension/changelog.md` คนร้ายได้ปลอมบันทึกการอัปเดตไว้ 11 เวอร์ชันตั้งแต่ `1.0.0` ถึง `1.0.24` อันเวอร์ชัน `1.0.5` นี่แอบน่าสงสัยค่ะ:
+ส่วนหน้าของไฟล์ `extension/dist/extension.js` (`disasm/geaix_pre_tail_deobfuscated.js` ทั้งหมด 76 ฟังก์ชัน) คือโค้ดของปลั๊กอิน **Kilo Code** ของจริงทั้งหมดที่ถูกเปลี่ยนชื่อคำสั่งเป็น `geaix.*` และในไฟล์ `extension/changelog.md` คนร้ายได้ปลอมบันทึกการอัปเดตไว้ 9 เวอร์ชันตั้งแต่ `1.0.0` ถึง `1.0.24` อันเวอร์ชัน `1.0.5` นี่แอบน่าสงสัยค่ะ:
 > `1.0.5 — Maintenance release: infrastructure move to a new host, no user-facing changes.`
 
 #### กลไกการฝังตัว (Persistence) ผ่าน Lifecycle ของ IDE
@@ -180,8 +180,8 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
    ถ้ายังไม่มีไฟล์ในเครื่อง มันจะดาวน์โหลดไฟล์ ZIP จาก `GET /api/vscode/software/download/<id>` (Timeout `VEa = 60,000 ms`) ตรวจสอบค่า SHA-256 ด้วยฟังก์ชัน `vdn()` แล้วสร้างโฟลเดอร์ใน `%TEMP%` โดยสุ่มคำนำหน้าด้วย `crypto.randomBytes(16)[0] % 12` จากอาร์เรย์ `o4e` ทั้ง 12 คำนี้:
    ```js
    const o4e = [
-     "SessionId", "allowDots", "installer", "svchost", "wuauclt", "msupdate",
-     "text/plain;charset=US-ASCII", "--\r\n", "\n  ", "tmp", "wawarabic", "serverInfo"
+     "setup", "update", "installer", "svchost", "wuauclt", "msupdate",
+     "sysprep", "runtime", "winhlp", "tmp", "pkg", "wsc"
    ];
    ```
    ตามด้วยเครื่องหมาย `-` หรือ `_` และเลขฐานสิบหกสุ่มอีก 4–7 ไบต์ ซึ่งในเครื่องของเรามันสร้างโฟลเดอร์ชื่อ:
@@ -236,7 +236,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
    | `build.dll` (Stage 3) | `0x6acb8e11` | `2026-10-11 13:24:33 UTC` | ถูกลบออก (Stripped) |
    | `jli.dll` (`loader.dll`) | `0x6acb8e1f` | `2026-10-11 13:24:47 UTC` | ถูกลบออก (Stripped) |
 
-   ตัว Stage 3 (`build.dll`) ถูกคอมไพล์เสร็จตอนเวลา `13:24:33 UTC` จากนั้นถูกนำไปเข้ารหัสฝังลงใน `.rdata` ของ Stage 2 แล้วคอมไพล์ออกมาเป็น `jli.dll` ตอนเวลา `13:24:47 UTC` (ห่างกันแค่ **14 วินาที**) ซึ่งเป็นเวลาเพียงไม่กี่ชั่วโมงก่อนที่เราจะกดดาวน์โหลดมาลงเครื่องในคืนวันที่ 11 ตุลาคม และไฟล์มัลแวร์ทั้งสองตัวถูกลบ MSVC Rich Header ออกทั้งหมด ในขณะที่ `javaw.exe` และ `vcruntime140.dll` ของแท้ยังมี Rich Header ของ MSVC 2022 อยู่ครบ
+   ตัว Stage 3 (`build.dll`) ถูกคอมไพล์เสร็จตอนเวลา `13:24:33 UTC` จากนั้นถูกนำไปเข้ารหัส (Encode) ฝังลงใน `.rdata` ของ Stage 2 แล้วคอมไพล์ออกมาเป็น `jli.dll` ตอนเวลา `13:24:47 UTC` (ห่างกันแค่ **14 วินาที**) ซึ่งเป็นเวลาเพียงไม่กี่ชั่วโมงก่อนที่เราจะกดดาวน์โหลดมาลงเครื่องในคืนวันที่ 11 ตุลาคม และไฟล์มัลแวร์ทั้งสองตัวถูกลบ MSVC Rich Header ออกทั้งหมด ในขณะที่ `javaw.exe` และ `vcruntime140.dll` ของแท้ยังมี Rich Header อยู่ครบ
 3. **ตาราง Import ที่ดูสะอาดตา:**
    `jli.dll` มีการ Import เฉพาะฟังก์ชันพื้นฐานของ C Runtime จาก `kernel32.dll` และ `api-ms-win-core-synch-l1-2-0.dll` เท่านั้น ฟังก์ชันที่เหลือที่มันต้องใช้ (`VirtualAlloc`, `LoadLibraryA`, `GetProcAddress`, `GetSystemMetrics`, `GetLogicalDrives`, `Sleep`, `RtlGetCurrentPeb`) ถูกเก็บเป็นข้อความเข้ารหัสแล้วค่อยหาตำแหน่งตอนรัน
 
@@ -326,7 +326,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 0x18007cdcb (shift=14): 'нахуй крыс, я не люблю этих снитчей'
 ```
 
-ในขณะที่รายชื่อโดเมน C2 ทั้ง 3 ตัวและเลข Campaign UUID ถูกเก็บแยกไว้ใน `.rdata` ด้วยการเข้ารหัสแบบ Single-byte XOR (แต่ละโครงสร้างเก็บค่า XOR key 1 ไบต์, ชื่อโดเมนที่เข้ารหัส, หมายเลขพอร์ต `0x01bb` = `443` และแฟล็ก HTTPS = `1`):
+ในขณะที่รายชื่อโดเมน C2 ทั้ง 3 ตัวและเลข Campaign UUID ถูกเก็บแยกไว้ใน `.rdata` ด้วยการเข้ารหัสแบบ Single-byte XOR โดยตาราง C2 ที่ `0x1800785c0` มี 3 รายการ แต่ละรายการเก็บ `{XOR key, pointer, ความยาว}` ฟังก์ชันหลักจะไล่ลองทีละตัวตามลำดับ ส่วนพอร์ต (`443`) ฝังตายตัวไว้ตอนเรียก `WinHttpConnect`:
 
 | ข้อมูล | ตำแหน่ง Virtual Address | คีย์ XOR | ค่าที่ถอดรหัสได้ |
 |---|---|---|---|
@@ -342,21 +342,21 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 | ช่วงตำแหน่งฟังก์ชัน (VA) | ขนาด | หน้าที่การทำงาน และ API / ข้อความสำคัญที่ใช้ |
 |---|---|---|
 | `0x18002a15e..0x18002e2bc` | `0x415e` | **ฟังก์ชันควบคุมหลักและส่งข้อมูลออก (Main Orchestrator & Exfiltration):** เรียกเช็ค VM (`0x18001f879`), เช็คภาษาเครื่อง (`0x180055579`), รวบรวมข้อมูล, บีบอัดด้วย `RtlCompressBuffer` (`0x180015a54`) และส่ง `POST /` ไปยัง C2 มีข้อความภาษารัสเซียฝังอยู่คือ `'нахуй крыс, я не люблю этих снитчей'` (*"ช่างแม่xพวกหนูสกปรก กูไม่ชอบพวกขี้ฟ้อง"*) |
-| `0x18001f879..0x1800210b0` | `0x1837` | **ตรวจจับ Virtual Machine / Hypervisor:** เช็คค่า CPUID เทียบกับรายชื่อ Hypervisor 31 ตัว (`VMwareVMware`, `VBoxVBoxVBox`, `KVM`, `XenVMMXenVMM`, `prl hyperv`, `TCGTCGTCGTCG`, `bhyve bhyve`, `HAXMHAXMHAXM`, `IntelTDX    `, `Linux KVM Hv`, `NoirVisor ZT` ฯลฯ) และเช็คชื่อการ์ดจอจำลอง (`Virtio`, `Standard VGA`, `Basic Display`) |
+| `0x18001f879..0x1800210b0` | `0x1837` | **ตรวจจับ Virtual Machine / Hypervisor:** เช็คค่า CPUID เทียบกับรายชื่อ Hypervisor ประมาณ 30 ตัว (`VMwareVMware`, `VBoxVBoxVBox`, `XenVMMXenVMM`, `prl hyperv`, `TCGTCGTCGTCG`, `bhyve bhyve`, `HAXMHAXMHAXM`, `IntelTDX    `, `Linux KVM Hv`, `NoirVisor ZT` ฯลฯ) และเช็คชื่อการ์ดจอจำลอง (`Virtio`, `Standard VGA`, `Basic Display`) |
 | `0x180055579..0x18005b3a5` | `0x5e2c` | **ระบบยกเว้นประเทศกลุ่ม CIS & เก็บข้อมูลเครื่อง:** เรียก `GetUserDefaultLocaleName`, `LCIDToLocaleName` และอ่าน `HKCU\Keyboard Layout\Preload` เทียบกับรหัสภาษา `uk, uz, az, hy, tg, tk, ky, kk, be, ru, ro-md` (ถ้าตรงจะหยุดทำงานทันที) พร้อมดึงข้อมูลรุ่น OS (`RtlGetVersion`), CPU/RAM (`GetSystemInfo`, `GlobalMemoryStatusEx`), GPU (`EnumDisplayDevicesW`), เลข Serial ดิสก์ (`GetVolumeInformationW`) และรายชื่อโปรแกรมที่ติดตั้งจาก `HKLM\...\Uninstall` |
 | `0x180004082..0x180006eec` | `0x2e6a` | **โมดูลเจาะเบราว์เซอร์ตระกูล Chromium:** กวาดหาโฟลเดอร์ `User Data\(Default|Profile *)` ใน `%LOCALAPPDATA%` และ `%APPDATA%` เพื่อดึง `Local State`, `Login Data`, `Login Data For Account`, `logins_alt`, `Web Data`, `History`, `Preferences`, `Network\Cookies` และ `Local Storage\leveldb` |
-| `0x1800634a3..0x1800643a5` | `0x0f02` | **การสร้าง Hidden Desktop สำหรับเจาะ Chrome `v20`:** อ่านค่า `app_bound_encrypted_key` / `master_app_bound_encrypted_key` จาก `Local State` และเรียก `user32!CreateDesktopA` เพื่อสร้างหน้าจอจำลองที่มองไม่เห็น (`CloseDesktop` เมื่อเสร็จงาน) |
+| `0x1800634a3..0x1800643a5` | `0x0f02` | **การสร้าง Hidden Desktop สำหรับเจาะ Chrome `v20`:** อ่านค่า `app_bound_encrypted_key` จาก `Local State` และเรียก `user32!CreateDesktopA` เพื่อสร้างหน้าจอจำลองที่มองไม่เห็น (`CloseDesktop` เมื่อเสร็จงาน) |
 | `0x1800601c8..0x1800620d2` | `0x1f0a` | **การสวมรอยสิทธิ์ Token ของผู้ใช้ (Token Impersonation):** หา PID ของ Explorer จาก `GetShellWindow` -> `GetWindowThreadProcessId` แล้วเรียก `OpenProcess` -> `OpenProcessToken` -> `DuplicateTokenEx` เพื่อสั่งรันเบราว์เซอร์ภายใต้ Token ของผู้ใช้จริงด้วย `CreateProcessWithTokenW` |
 | `0x18000b161..0x180013537` | `0x83d6` | **โมดูล Thread Hijacking & ดูดกุญแจ Chrome `v20` จาก RAM:** ไล่หา Process และ Thread (`NtQuerySystemInformation`, `CreateToolhelp32Snapshot`, `Thread32First`/`Next`), เปิดเข้าถึงเบราว์เซอร์ (`OpenProcess`, `OpenThread`), หยุดการทำงานของ Thread (`SuspendThread`), จองพื้นที่และฉีดโค้ด (`VirtualAllocEx`, `WriteProcessMemory`), แก้ตำแหน่ง `RIP` (`GetThreadContext` -> `SetThreadContext`), สั่งรันต่อ (`ResumeThread`) แล้วกวาดอ่านกุญแจ `v20` ที่ถอดรหัสแล้วจากหน่วยความจำ (`VirtualQueryEx`, `ReadProcessMemory`, `CryptUnprotectMemory`) |
 | `0x18003ec1c..0x180040ccc` | `0x20b0` | **โมดูลขโมย Browser Extensions:** กวาดโฟลเดอร์ `\Local Extension Settings` และ `\Extensions` โดยข้ามตัวที่ชื่อหรือ ID ตรงกับ Blacklist ขนาด `5,390` ตัวอักษรที่ `0x18007aace` (276 รายการ: Ad-blocker, Extension แอนตี้ไวรัส/ความปลอดภัย, เครื่องมือทั่วไป และ Extension ID อีก 60 ตัว) นอกนั้นโดนดูดหมด ปลั๊กอินกระเป๋าคริปโตกับ 2FA เลยโดนไปด้วย ไม่ได้มีลิสต์ ID กระเป๋าคริปโตแยกไว้โดยเฉพาะ |
 | `0x1800423cc..0x180043db3` | `0x19e7` | **โมดูลเจาะเบราว์เซอร์ตระกูล Gecko (Zen Browser / Firefox):** กวาด `%APPDATA%\<browser>\Profiles\*` เพื่อขโมย `key4.db`, `logins.json`, `logins.db`, `cookies.sqlite`, `places.sqlite`, `formhistory.sqlite`, `autofill-profiles.json` และ `storage\default` |
-| `0x180044cf6..0x18004e929` | `0x9c33` | **โมดูลถอดรหัส Discord, Steam และ Roblox:** ค้นหาคำว่า `dQw4w9WgXcQ:` ในไฟล์ `.ldb`/`.log` ของ Discord และ Discord PTB, ถอดรหัสกุญแจ `encrypted_key` จาก `Local State` ด้วย `CryptUnprotectData` (`0x18002ea17`) แล้วถอดรหัส Token ด้วย `bcrypt!BCryptOpenAlgorithmProvider("AES")` + `ChainingModeGCM` + `BCryptDecrypt` บันทึกลง `tokens.txt` (`0x180053091`) รวมถึงดึงไฟล์ Steam (`config\config.vdf`, `Steam\local.vdf` `ConnectCache`) และเรียกโมดูล Roblox (`0x18001c972`) |
+| `0x180044cf6..0x18004e929` | `0x9c33` | **โมดูลถอดรหัส Discord, Steam และ Roblox:** ค้นหาคำว่า `dQw4w9WgXcQ:` ในไฟล์ `.ldb`/`.log` ของ Discord, ถอดรหัสกุญแจ `encrypted_key` จาก `Local State` ด้วย `CryptUnprotectData` (`0x18002ea17`) แล้วถอดรหัส Token ด้วย `bcrypt!BCryptOpenAlgorithmProvider("AES")` + `ChainingModeGCM` + `BCryptDecrypt` บันทึกลง `tokens.txt` (`0x180053091`) รวมถึงดึงไฟล์ Steam (`config\config.vdf`, `Steam\local.vdf` `ConnectCache`) และเรียกโมดูล Roblox (`0x18001c972`) |
 | `0x18001c972..0x18001d651` | `0x0cdf` | **โมดูลถอดรหัสคุกกี้ Roblox (`.ROBLOSECURITY`):** อ่านไฟล์ `%LOCALAPPDATA%\Roblox\LocalStorage\RobloxCookies.dat` ดึงค่า `CookiesData` มาแปลง Base64 ด้วย `CryptStringToBinaryA` (`0x1800345be`) และถอดรหัส DPAPI ด้วย `CryptUnprotectData` |
 | `0x18005c9f6..0x18005e5b5` | `0x1bbf` | **โมดูลแคปภาพหน้าจอความละเอียดจริง:** เรียก `SetProcessDPIAware` -> `GetSystemMetrics` -> `GetDC(NULL)` -> `CreateCompatibleDC` -> `CreateCompatibleBitmap` -> `BitBlt` -> `GetDIBits` แล้วเติมหัวไฟล์ BMP (`BM`) |
 | `0x180015a54..0x18001a0e6` | `0x4692` | **การบีบอัดข้อมูลใน RAM:** ใช้ `ntdll!RtlGetCompressionWorkSpaceSize` และ `ntdll!RtlCompressBuffer` บีบอัดก้อนข้อมูลทั้งหมดก่อนส่ง |
 | `0x18003c0d4..0x18003e4a6` | `0x23d2` | **การส่งข้อมูลผ่าน HTTPS:** ใช้ `WinHttpOpen` -> `WinHttpConnect` -> `WinHttpOpenRequest("POST", "/")` -> `WinHttpSendRequest` ส่งข้อมูลออกทางพอร์ต `443` |
-| `0x1800277a6..0x180029944` | `0x219e` | **โมดูลสลับเลขกระเป๋าคริปโตใน Clipboard (Clipper):** วนลูป `Sleep(300)` เช็ค `GetClipboardSequenceNumber` ทุกๆ 300ms ถ้าข้อความใน Clipboard ขึ้นต้นด้วย `bc1`, `ltc1`, `bitcoincash:`, `EQ`, `UQ` หรือ `addr1` จะใช้ `OpenClipboard` -> `EmptyClipboard` -> `SetClipboardData` สลับเป็นกระเป๋าของคนร้ายทันที |
-| `0x1800662e1..0x18006827b` | `0x1f9a` | **โมดูลดาวน์โหลดและรันไฟล์เสริม (Secondary Loader):** ดาวน์โหลดไฟล์ลง `%TEMP%` ด้วย `curl.exe -fs -o` หรือ `certutil.exe -urlcache -split` แล้วสั่งรัน `.exe` (`CreateProcessW`), `.msi` (`msiexec.exe /i /qn /norestart`), `.ps1` (`powershell.exe -ex bypass -File`), `.bat`/`.cmd` (`cmd.exe`) หรือผ่าน COM `IShellDispatch` (`CoCreateInstance`) |
+| `0x1800277a6..0x180029944` | `0x219e` | **โมดูลสลับเลขกระเป๋าคริปโตใน Clipboard (Clipper):** คอยเช็ค `GetClipboardSequenceNumber` ไปเรื่อยๆ ถ้าข้อความใน Clipboard ขึ้นต้นด้วย `bc1`, `ltc1`, `bitcoincash:`, `EQ`, `UQ` หรือ `addr1` จะใช้ `OpenClipboard` -> `EmptyClipboard` -> `SetClipboardData` สลับเป็นกระเป๋าของคนร้ายทันที |
+| `0x1800662e1..0x18006827b` | `0x1f9a` | **โมดูลดาวน์โหลดและรันไฟล์เสริม (Secondary Loader):** ดาวน์โหลดไฟล์ลง `%TEMP%` ด้วย `curl.exe -fs -o` หรือ `certutil.exe -urlcache -split` แล้วสั่งรัน `.exe` (`CreateProcessW`), `.msi` (`msiexec.exe /i /qn /norestart`), `.ps1` (`powershell.exe -ex bypass -File`), `.bat`/`.cmd` (`cmd.exe`) และยังเรียกใช้ COM (`CoCreateInstance` แต่กู้ CLSID เป้าหมายออกมาไม่ได้) |
 
 #### 3. วิธีที่ `build.dll` ใช้ข้ามระบบป้องกัน Chrome `v20` App-Bound Encryption
 ตั้งแต่ Chrome 127 เป็นต้นมา ข้อมูลรหัสผ่านใน `Login Data` และคุกกี้ใน `Network\Cookies` จะถูกเข้ารหัสด้วยกุญแจเวอร์ชันใหม่ที่ขึ้นต้นด้วย `v20` โดยเก็บกุญแจที่เข้ารหัสไว้ในไฟล์ `Local State` ชื่อ `os_crypt.app_bound_encrypted_key` ซึ่งไม่สามารถใช้ `CryptUnprotectData` (DPAPI ปกติ) ถอดรหัสตรงๆ ได้อีกต่อไป เพราะ Chrome ผูกสิทธิ์การถอดรหัสไว้กับเซอร์วิส `elevation_service.exe` ที่จะยอมถอดรหัสให้เฉพาะกรณีที่ Process ที่เรียกเข้ามาคือไฟล์ `chrome.exe` ของแท้เท่านั้น
@@ -366,7 +366,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 2. ฟังก์ชัน `0x1800601c8` ดึง Token ของผู้ใช้ปัจจุบันจาก `GetShellWindow` -> `OpenProcessToken` -> `DuplicateTokenEx` แล้วสั่งเปิดหรือเข้าถึง Process ของเบราว์เซอร์บน Hidden Desktop นั้น
 3. ฟังก์ชัน `0x18000b161` ค้นหา Thread ของเบราว์เซอร์ผ่าน `CreateToolhelp32Snapshot` (`Thread32First` / `Thread32Next`) เปิด Handle ของ Thread ด้วย `OpenThread` แล้วสั่งหยุดการทำงานชั่วคราวด้วย `SuspendThread`
 4. จองพื้นที่หน่วยความจำภายใน Process ของ `chrome.exe` ด้วย `VirtualAllocEx` เขียน Shellcode ลงไปผ่าน `WriteProcessMemory` แล้วดึงค่า Register ปัจจุบันด้วย `GetThreadContext` เพื่อแก้ตำแหน่ง `RIP` ให้ชี้ไปยังโค้ดที่ฉีดเข้าไปด้วย `SetThreadContext` ก่อนจะสั่ง `ResumeThread`
-5. เนื่องจากโค้ดที่ฉีดเข้าไปทำงานอยู่ภายใต้บริบทของ `chrome.exe` ของแท้ ทำให้กุญแจ `v20` ถูกถอดรหัสออกวางไว้ในหน่วยความจำ จากนั้นตัวมัลแวร์จะใช้ `VirtualQueryEx` + `ReadProcessMemory` + `CryptUnprotectMemory` เพื่อดูดกุญแจ `master_encryption_key` ขนาด 32 ไบต์ออกมาจาก RAM ของเบราว์เซอร์ แล้วสั่งปิดเบราว์เซอร์ที่ซ่อนอยู่ทิ้งด้วย `TerminateProcess` (`0x180015708`)
+5. เนื่องจากโค้ดที่ฉีดเข้าไปทำงานอยู่ภายใต้บริบทของ `chrome.exe` ของแท้ ทำให้กุญแจ `v20` ถูกถอดรหัสออกวางไว้ในหน่วยความจำ จากนั้นตัวมัลแวร์จะใช้ `VirtualQueryEx` + `ReadProcessMemory` + `CryptUnprotectMemory` เพื่อดูดกุญแจ `master_encryption_key` ขนาด 32 ไบต์ออกมาจาก RAM ของเบราว์เซอร์ แล้วสั่งปิดเบราว์เซอร์ที่ซ่อนอยู่ทิ้งด้วย `TerminateProcess`
 6. เมื่อได้กุญแจ `v20` ขนาด 32 ไบต์มาแล้ว ฟังก์ชัน `0x180004082` ก็สามารถนำมาถอดรหัส AES-256-GCM กับรหัสผ่านและคุกกี้ `v20` ทุกตัวในเครื่องได้ทันทีค่ะ
 
 ---
@@ -383,7 +383,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 3. **Vivaldi Browser (`%LOCALAPPDATA%\Vivaldi\User Data\Default`):**
    - รหัสผ่านและคุกกี้ที่เข้ารหัสด้วย DPAPI `v10` มาตรฐาน
 4. **Discord และ Discord PTB (`%APPDATA%\discord` & `%APPDATA%\discordptb`):**
-   - ไฟล์ `.ldb` และ `.log` ใน `Local Storage\leveldb` ที่มีโทเคน `dQw4w9WgXcQ:` ถูกถอดรหัสด้วยกุญแจ `encrypted_key` จาก `Local State` ผ่าน `BCryptDecrypt` (`AES-256-GCM`) ได้เป็น Token ของทั้งบัญชีหลักและบัญชีรองของเรา
+   - ไฟล์ `.ldb` และ `.log` ใน `Local Storage\leveldb` ที่มีโทเคน `dQw4w9WgXcQ:` ถูกถอดรหัสด้วยกุญแจ `encrypted_key` จาก `Local State` ผ่าน `BCryptDecrypt` (`AES-256-GCM`) ได้เป็น Token ของทั้งบัญชีหลักและบัญชีรองของเรา (ใน String ของตัวขโมยมีแค่คำว่า `discord` เลยพิสูจน์ไม่ได้ว่ามันอ่านโฟลเดอร์ PTB ด้วย แต่เราถือว่า Token ทั้งสองหลุดไปแล้วค่ะ)
 5. **Steam และ Roblox:**
    - ไฟล์ `config\config.vdf`, `loginusers.vdf` และ `%LOCALAPPDATA%\Steam\local.vdf` (`ConnectCache` ของ Steam)
    - ไฟล์ `%LOCALAPPDATA%\Roblox\LocalStorage\RobloxCookies.dat` (คุกกี้ `.ROBLOSECURITY` ของ Roblox)
@@ -413,7 +413,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 บอกชื่อไม่ได้นะคะ และหลักฐานในนี้ก็ยืนยันตัวตนใครไม่ได้ แต่เราค่อนข้างสงสัยว่าเป็น**ทีม** ไม่ใช่คนเดียว และน่าจะเป็น**กลุ่มที่พูดภาษารัสเซีย อาจจะอยู่ในรัสเซียหรือประเทศแถวนั้น**
 
 **ทำไมคิดว่าเป็นทีม:**
-- **ฉากหน้าคือโปรดักต์ปลอมทั้งตัว:** มีเว็บ `geaix.com` ที่มี Dashboard มีระบบล็อกอิน มี Extension AI ที่ Fork มาจาก Kilo Code แถมมี Changelog ปลอมที่ดูน่าเชื่อ 11 รายการ ไล่ไปจนถึงเวอร์ชัน `1.0.24` ลงแรงเยอะเกินไปสำหรับแค่เหยื่อล่อ
+- **ฉากหน้าคือโปรดักต์ปลอมทั้งตัว:** มีเว็บ `geaix.com` ที่มี Dashboard มีระบบล็อกอิน มี Extension AI ที่ Fork มาจาก Kilo Code แถมมี Changelog ปลอมที่ดูน่าเชื่อ 9 รายการ ไล่ไปจนถึงเวอร์ชัน `1.0.24` ลงแรงเยอะเกินไปสำหรับแค่เหยื่อล่อ
 - **หลังบ้านแยกกันเป็นส่วนๆ:** ตัว Dropper คุยกับ `geaix.com` แต่ตัวขโมยข้อมูลส่งไปอีก 3 โดเมน (`dtapi.cc`, `x1zsp.cc`, `cfmlapi.cc`) แถมมี Campaign ID ติดไปด้วย คนคุมจะได้รู้ว่าเหยื่อแต่ละคนมาจากแคมเปญไหน
 - **มาจากระบบ Build:** ตัว Loader กับตัวขโมยข้อมูลคอมไพล์ห่างกันแค่ 14 วินาที แปลว่าไม่ใช่งานทำมือครั้งเดียว
 - **คนเอา Session ไปใช้ก็เป็นอีกงานนึง:** บอทล็อกอินจาก Los Angeles กับ Cologne หลังจากนั้น 8 วัน แล้วรันสคริปต์สแปมอัตโนมัติ
@@ -432,9 +432,18 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 
 เราไม่ได้สมัครหรือโหลด Extension จากเว็บพวกนั้นมานะคะ เลยยืนยันไม่ได้ว่าทุกเว็บปล่อยตัวขโมยตัวเดียวกัน แต่เซิร์ฟเวอร์เดียวกัน เว็บเดียวกัน API มัลแวร์ตัวเดียวกัน ต่างกันแค่ชื่อ จะบอกว่าบังเอิญก็ยากแล้วค่ะ ดูเหมือนเป็นกลุ่มเดียวที่ปั๊ม "เครื่องมือ AI ตัวใหม่" ออกมาเป็นล็อต พอชื่อนึงโดนแจ้ง ชื่อต่อไปก็รออยู่แล้ว นี่ก็เป็นอีกเหตุผลที่เราคิดว่าเป็นทีมค่ะ
 
+**อัปเดต (24 ตุลาคม 2026): ย้ายบ้านหนีแล้ว และตอนนี้พิสูจน์ได้แล้วค่ะ** หลังเราแจ้ง `geaix.com` ไปที่ผู้รับจดโดเมน ผู้ให้บริการเซิร์ฟเวอร์ และ abuse.ch เมื่อวันที่ 23 ตุลาคม เซิร์ฟเวอร์เก่าก็ดับไป และ `geaix.com` ก็หายไปจาก DNS แต่อีก 8 โดเมนที่เหลือไม่ได้ตายตามนะคะ ย้ายไปอยู่ที่ `207.180.58.108` แป๊บนึง แล้วก็ไปลงที่เซิร์ฟเวอร์ใหม่ `179.61.227.71` (เป็นเครือข่ายอื่น AS399486 ที่จดทะเบียนในนามบริษัทแคนาดา แต่ Censys ระบุว่าเซิร์ฟเวอร์อยู่ที่ปารีส และก็ยังเป็น IP ที่เช่ามาจาก IPXO เหมือนเดิม)
+
+![ผลค้นหา 179.61.227.71 ใน Censys เจอ axqua.com, opnzy.com, plikai.com, vunex.dev และชื่อ www. ชี้มาที่เซิร์ฟเวอร์นี้](/mrbeast/censys-new-host.avif)
+> เซิร์ฟเวอร์ใหม่ โดเมนชุดเดิม
+
+เราเลยสมัครบัญชีทิ้งไว้เว็บนึงแล้วลองเช็คดู ตอนนี้มี 7 เว็บที่แจกไฟล์ Extension ของตัวเองที่ `/vsix/<ชื่อแบรนด์>-1.0.25.vsix` (`vunex-1.0.25.vsix`, `axqua-1.0.25.vsix` ฯลฯ) เราโหลดมาครบทั้ง 7 ตัวแล้วแกะดูโดยไม่ได้รันเลย ทุกไฟล์ Hash ไม่เหมือนกัน แต่ข้างในคือ Extension ของ Geaix ที่มี **Dropper ตัวเดิมและ Endpoint โหลดมัลแวร์ตัวเดิม** เปลี่ยนแค่ชื่อกับ Publisher เท่านั้น ส่วน `opnzy.com` ยังเป็นตัวสำรองที่ยังไม่มีอะไรค่ะ
+
+ตรงกับที่เดาไว้ข้างบนเป๊ะเลยค่ะว่า "ชื่อต่อไปรออยู่แล้ว" ตอนนี้ยืนยันได้แล้ว Hash อยู่ในลิสต์ IOC ข้างล่าง และตัวอย่างไฟล์ทั้งหมดอยู่บน [MalwareBazaar](https://bazaar.abuse.ch/browse/tag/Geaix/) ใต้แท็ก `Geaix` ค่ะ
+
 **ทำไมถึงคิดว่าเป็นรัสเซีย:**
 - ตัวขโมยข้อมูล**จะหยุดทำงานทันทีถ้าภาษาหรือคีย์บอร์ดของเครื่องเป็นรัสเซีย** หรือประเทศกลุ่ม CIS (`ru`, `uk`, `be`, `kk`, `uz`, `az`, `hy`, `tg`, `tk`, `ky`, `ro-md`) กลุ่มมัลแวร์ที่พูดรัสเซียชอบทำแบบนี้กัน จะได้ไม่มีปัญหากับกฎหมายบ้านตัวเอง
-- มี**คำด่าภาษารัสเซีย**ซ่อนอยู่ในโค้ดส่วนที่ส่งข้อมูลออก
+- มี**คำด่าภาษารัสเซีย**ซ่อนอยู่ในฟังก์ชันหลักของตัวขโมย
 
 ทั้งหมดนี้เป็นเบาะแสที่ค่อนข้างชัด แต่ยังไม่ใช่หลักฐานนะคะ String กับการเช็คภาษาสามารถจงใจใส่ไว้เพื่อโยนความผิดให้คนอื่นได้
 
@@ -448,7 +457,7 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 - `%USERPROFILE%\.vscode\extensions\geaix.geaix-1.0.24`
 - `%USERPROFILE%\.antigravity\extensions\geaix.geaix-1.0.24`
 - โฟลเดอร์ใน `%TEMP%` (`%TEMP%\<prefix><sep><4-7 hex bytes>\`) ที่มีไฟล์ `javaw.exe`, `jli.dll` และ `vcruntime140.dll` อยู่ข้างใน โดยที่ `<prefix>` อยู่ในกลุ่มคำเหล่านี้:
-  `SessionId`, `allowDots`, `installer`, `svchost`, `wuauclt`, `msupdate`, `text/plain;charset=US-ASCII`, `--\r\n`, `\n  `, `tmp`, `wawarabic`, `serverInfo`
+  `setup`, `update`, `installer`, `svchost`, `wuauclt`, `msupdate`, `sysprep`, `runtime`, `winhlp`, `tmp`, `pkg`, `wsc`
 
 ### พฤติกรรมที่ใช้ตรวจจับ (Hunting Queries)
 - มี Process `javaw.exe` รันขึ้นมาจากโฟลเดอร์ `%TEMP%` โดยมี Parent Process คือ `cmd.exe` (`/c start "" /B`) ที่ถูกเรียกมาจาก VS Code (`Code.exe`) หรือ Antigravity
@@ -465,9 +474,12 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 | `https://geaix.com/api/vscode/software/download/<id>` | URL | API ดาวน์โหลดไฟล์ ZIP ของ Stage 2 |
 | `https://geaix.com/api/vscode/software/started` | URL | API แจ้งสถานะหลังสั่งรัน `javaw.exe` สำเร็จ |
 | `wss://geaix.com/api/ws?client=vscode&token=<...>` | WebSocket | ช่องทางส่งข้อมูล Process Tree และการเปลี่ยนแปลงไฟล์ตลอด 15 นาทีแรก |
-| `64.204.180.86` | IP | เซิร์ฟเวอร์ของ `geaix.com` และเว็บพี่น้อง (AS213250, Frankfurt, DE) |
-| `ahiak.com`, `aiqana.com`, `axqua.com`, `excelnt.ai`, `lebang.si`, `plikai.com`, `vunex.dev` (+ `www.`) | Domain | เว็บ Geaix ตัวเดียวกันในชื่ออื่น มี Endpoint `/api/vscode/software/pick` เหมือนกัน (เช็คเมื่อ 22 ต.ค. 2026) |
-| `opnzy.com` (+ `www.`) | Domain | ชี้ไปที่ IP เดียวกัน ตอนเช็ค 22 ต.ค. 2026 ขึ้น "Not found" |
+| `64.204.180.86` | IP | เซิร์ฟเวอร์เดิมของ `geaix.com` และเว็บพี่น้อง (AS213250, Frankfurt, DE) ดับตั้งแต่ 23 ต.ค. 2026 |
+| `207.180.58.108` | IP | เซิร์ฟเวอร์ชั่วคราวของเว็บพี่น้องเมื่อ 23 ต.ค. 2026 (AS213250) |
+| `179.61.227.71` | IP | เซิร์ฟเวอร์ปัจจุบันของเว็บพี่น้อง (AS399486) ณ 24 ต.ค. 2026 |
+| `https://geaix.com/vsix/geaix-1.0.25.vsix` | URL | มาแทน 1.0.24 ที่ Path เดิม (23 ต.ค. 2026) |
+| `ahiak.com`, `aiqana.com`, `axqua.com`, `excelnt.ai`, `lebang.si`, `plikai.com`, `vunex.dev` (+ `www.`) | Domain | เว็บ Geaix ตัวเดียวกันในชื่ออื่น แต่ละเว็บแจก `/vsix/<ชื่อแบรนด์>-1.0.25.vsix` ที่มี Dropper ตัวเดิม (ยืนยันแล้ว 24 ต.ค. 2026) |
+| `opnzy.com` (+ `www.`) | Domain | ชี้ไปที่ IP เดียวกัน ตอนเช็ค 24 ต.ค. 2026 ยังไม่มีไฟล์มัลแวร์ (ขึ้น "Not found") |
 | `dtapi.cc:443` | C2 Domain | เซิร์ฟเวอร์ C2 หลักของ Stage 3 (`0x18007e4ed`, คีย์ XOR `0x8d`) |
 | `x1zsp.cc:443` | C2 Domain | เซิร์ฟเวอร์ C2 สำรองลำดับที่ 2 (`0x18007d214`, คีย์ XOR `0xe5`) |
 | `cfmlapi.cc:443` | C2 Domain | เซิร์ฟเวอร์ C2 สำรองลำดับที่ 3 (`0x180079451`, คีย์ XOR `0xd9`) |
@@ -477,6 +489,14 @@ return HXr(), Kgt(context, Bg()).catch(() => {}),
 | ชื่อไฟล์ | ขนาด (Bytes) | SHA-256 |
 |---|---|---|
 | `geaix-1.0.24.vsix` | `27,124,774` | `02cd28dc0a9c1ee109462aa6942dfbc3bdb1af9210315eaa326e73e49d01ac0d` |
+| `geaix-1.0.25.vsix` | `28,531,046` | `b6ac717195b74240e6c1bddf202be6bb3e11e4dd5cd4767072b6a8fdd3567a8b` |
+| `vunex-1.0.25.vsix` | `28,528,022` | `4e95d59ceff134e041a08ff8f78d3b52a12b1724768d2103c386215d7d164989` |
+| `axqua-1.0.25.vsix` | `28,530,208` | `66d1899ba385c4b1dcea534aea16d00223233acacdcae0f9611ff97acb00ecc2` |
+| `plikai-1.0.25.vsix` | `28,529,729` | `285ecbdb10b2ae2c71f82dbbd99aa73afcbb33333208929b8b751e95a480b62a` |
+| `lebang-1.0.25.vsix` | `28,528,834` | `f101b41b19a38b7c42f7fff93f59f4a7e8dfbeff5ac2f3a3605523d5b8579c2c` |
+| `ahiak-1.0.25.vsix` | `28,530,548` | `eb53d22a1d8a376960d2985c9c69826d52eaf535071e939296aa7102b3c43637` |
+| `aiqana-1.0.25.vsix` | `28,530,663` | `f78c077fdce8231c654834294c686d6fe202665a5d4aca4041f8bc1b29bb96c2` |
+| `excelnt-1.0.25.vsix` | `28,532,508` | `2d7c665f5282a6210b33e7f4cccc453b736ceba88ba9d27b868c0c5e0c046f08` |
 | `extension/dist/extension.js` (ใน VSIX) | `36,654,196` | `c9189e2c1ff2d216618059513735b034598cbb728d5cc6542f3f1ef79d3c7975` |
 | `javaw.exe` (Signed Adoptium Temurin) | `50,344` | `ca798475399c19c13be92b91f262003e82befe5ecc35a0e25e72522868466357` |
 | `jli.dll` (Stage 2 `loader.dll`) | `736,256` | `d76e906a18c04826996d1f30de248e7a0e50c48814c82e9583b36c91fdf66f00` |

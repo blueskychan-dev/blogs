@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T23:40:46.425Z",
+  "generatedAt": "2026-10-23T22:26:48.777Z",
   "count": 13,
   "blogs": [
     {
@@ -21,6 +21,7 @@
       ],
       "assets": [
         "/mrbeast/attack-flow.avif",
+        "/mrbeast/censys-new-host.avif",
         "/mrbeast/censys-shared-host.avif",
         "/mrbeast/discord-devices.avif",
         "/mrbeast/discord-dm-scam.avif",
@@ -51,6 +52,7 @@
       ],
       "assets": [
         "/mrbeast/attack-flow.avif",
+        "/mrbeast/censys-new-host.avif",
         "/mrbeast/censys-shared-host.avif",
         "/mrbeast/discord-devices.avif",
         "/mrbeast/discord-dm-scam.avif",

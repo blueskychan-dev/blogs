@@ -125,7 +125,7 @@ Okay, nerd time. The whole thing has three stages, and the point of all of them 
 
 - **Stage 1 (`geaix-1.0.24.vsix` -> `extension/dist/extension.js`):** A functional fork of the open-source **Kilo Code** AI assistant (`36,654,196` bytes) with a string-obfuscated Node.js dropper (`qEa` -> `Kgt`, `HEa`, `gdn`, `DEa`) appended at the tail of the bundle.
 - **Stage 2 (`javaw.exe` + `jli.dll`):** A legitimate, signed **Eclipse Adoptium Temurin OpenJDK** `javaw.exe` (`50,344` bytes) used to DLL-side-load a malicious unsigned `jli.dll` (`736,256` bytes, internal PE export name `loader.dll`). `jli.dll` is obfuscated with control-flow flattening (CFF) and reflectively maps Stage 3 into a single RWX memory region.
-- **Stage 3 (`build.dll`):** A PE64 DLL (`607,744` bytes once rebuilt, `SizeOfImage` `0x9b000`) stored inside `jli.dll` as encoded text and decoded straight into RAM (custom 64-character alphabet + LZ77). It implements anti-VM checks, a CIS/post-Soviet locale killswitch, a hidden-desktop thread-hijacking bypass for Chrome `v20` App-Bound Encryption, Gecko/Discord/Steam/Roblox credential harvesting, a secondary payload runner, and a 300ms cryptocurrency clipboard clipper.
+- **Stage 3 (`build.dll`):** A PE64 DLL (`607,744` bytes once rebuilt, `SizeOfImage` `0x9b000`) stored inside `jli.dll` as encoded text and decoded straight into RAM (custom 64-character alphabet + LZ77). It implements anti-VM checks, a CIS/post-Soviet locale killswitch, a hidden-desktop thread-hijacking bypass for Chrome `v20` App-Bound Encryption, Gecko/Discord/Steam/Roblox credential harvesting, a secondary payload runner, and a cryptocurrency clipboard clipper.
 
 ![Full Geaix VS Code Extension Attack Chain Flowchart](/mrbeast/attack-flow.avif)
 
@@ -135,7 +135,7 @@ Okay, nerd time. The whole thing has three stages, and the point of all of them 
 
 A `.vsix` is just a ZIP file, so I unzipped `geaix-1.0.24.vsix` (`27,124,774` bytes, SHA-256 `02cd28dc0a9c1ee109462aa6942dfbc3bdb1af9210315eaa326e73e49d01ac0d`) and the `extension.vsixmanifest` says publisher `geaix`, version `1.0.24`, and `GalleryFlags: Public`.
 
-The pre-tail portion of `extension/dist/extension.js` (`disasm/geaix_pre_tail_deobfuscated.js`, 76 functions) is the genuine Kilo Code extension (`sidebarProvider.getTaskWithId`, `createTask`, `postMessageToWebview`, etc.) rebranded under the `geaix.*` command namespace. They even wrote a fake `extension/changelog.md` with 11 releases from `1.0.0` to `1.0.24`. This one from `1.0.5` is kinda sus:
+The pre-tail portion of `extension/dist/extension.js` (`disasm/geaix_pre_tail_deobfuscated.js`, 76 functions) is the genuine Kilo Code extension (`sidebarProvider.getTaskWithId`, `createTask`, `postMessageToWebview`, etc.) rebranded under the `geaix.*` command namespace. They even wrote a fake `extension/changelog.md` with 9 releases from `1.0.0` to `1.0.24`. This one from `1.0.5` is kinda sus:
 > `1.0.5 — Maintenance release: infrastructure move to a new host, no user-facing changes.`
 
 #### Persistence via IDE Activation Events
@@ -182,8 +182,8 @@ The tail of `extension.js` is obfuscated with a rotating string array (`_0x1dc9`
    On a cache miss, it downloads the ZIP from `GET /api/vscode/software/download/<id>` (timeout `VEa = 60,000 ms`), verifies the SHA-256 buffer hash (`vdn`), and picks a decoy directory name in `%TEMP%` using `PEa()`. The prefix is selected via `crypto.randomBytes(16)[0] % 12` from the 12-element array `o4e`:
    ```js
    const o4e = [
-     "SessionId", "allowDots", "installer", "svchost", "wuauclt", "msupdate",
-     "text/plain;charset=US-ASCII", "--\r\n", "\n  ", "tmp", "wawarabic", "serverInfo"
+     "setup", "update", "installer", "svchost", "wuauclt", "msupdate",
+     "sysprep", "runtime", "winhlp", "tmp", "pkg", "wsc"
    ];
    ```
    Followed by `-` or `_` and 4–7 random hex bytes. On `YuriPC-Win11`, this produced:
@@ -238,7 +238,7 @@ Just looking at the PE headers of `jli.dll` and the unpacked Stage 3 (`build.dll
    | `build.dll` (Stage 3) | `0x6acb8e11` | `2026-10-11 13:24:33 UTC` | Stripped / Absent |
    | `jli.dll` (`loader.dll`) | `0x6acb8e1f` | `2026-10-11 13:24:47 UTC` | Stripped / Absent |
 
-   Stage 3 (`build.dll`) was compiled first at `13:24:33 UTC`, encrypted and embedded into Stage 2's `.rdata` section, and `jli.dll` was compiled **14 seconds later** at `13:24:47 UTC` — roughly 3.5 hours before I downloaded the VSIX that same night. Both malicious DLLs have their MSVC Rich headers stripped, whereas the legitimate `javaw.exe` and `vcruntime140.dll` retain intact MSVC 2022 Rich headers.
+   Stage 3 (`build.dll`) was compiled first at `13:24:33 UTC`, encoded and embedded into Stage 2's `.rdata` section, and `jli.dll` was compiled **14 seconds later** at `13:24:47 UTC` — roughly 3.5 hours before I downloaded the VSIX that same night. Both malicious DLLs have their MSVC Rich headers stripped, whereas the legitimate `javaw.exe` and `vcruntime140.dll` retain intact Rich headers.
 3. **Minimal Import Table:**
    `jli.dll` only imports standard CRT bootstrap routines from `kernel32.dll` and `api-ms-win-core-synch-l1-2-0.dll`. Everything else it needs (`VirtualAlloc`, `LoadLibraryA`, `GetProcAddress`, `GetSystemMetrics`, `GetLogicalDrives`, `Sleep`, `RtlGetCurrentPeb`) is stored as encoded strings and resolved at runtime.
 
@@ -330,7 +330,7 @@ I wrote a decoder for all 512 of them (`disasm/payload_decoded_strings_all.txt`)
 0x18007cdcb (shift=14): 'нахуй крыс, я не люблю этих снитчей'
 ```
 
-Meanwhile, the C2 servers and campaign UUID are stored separately in `.rdata` as single-byte XOR-encrypted structures (each C2 struct holds a 1-byte XOR key, encrypted domain string, TCP port `0x01bb` = `443`, and HTTPS flag `1`):
+Meanwhile, the C2 servers and campaign UUID are stored separately in `.rdata`, single-byte XOR-encoded. The C2 table at `0x1800785c0` has three `{XOR key, pointer, length}` entries that the main routine tries in order, and the port (`443`) is hardcoded at the `WinHttpConnect` call:
 
 | Artifact | Virtual Address | XOR Key | Decoded Value |
 |---|---|---|---|
@@ -346,21 +346,21 @@ All Win32 API calls inside `build.dll` go through a dynamic resolver helper at *
 | Function VA Range | Size | Purpose & Key Decoded Strings / APIs |
 |---|---|---|
 | `0x18002a15e..0x18002e2bc` | `0x415e` | **Main Orchestrator & Exfiltration:** Calls anti-VM (`0x18001f879`), CIS locale check (`0x180055579`), harvesting modules, `RtlCompressBuffer` (`0x180015a54`), and `POST /` to C2. Contains the Russian taunt `'нахуй крыс, я не люблю этих снитчей'`. |
-| `0x18001f879..0x1800210b0` | `0x1837` | **Anti-Hypervisor / VM Check:** Compares CPUID vendor strings against 31 hypervisor signatures (`VMwareVMware`, `VBoxVBoxVBox`, `KVM`, `XenVMMXenVMM`, `prl hyperv`, `TCGTCGTCGTCG`, `bhyve bhyve`, `HAXMHAXMHAXM`, `IntelTDX    `, `Linux KVM Hv`, `NoirVisor ZT`, etc.) plus display adapters (`Virtio`, `Standard VGA`, `Basic Display`). |
+| `0x18001f879..0x1800210b0` | `0x1837` | **Anti-Hypervisor / VM Check:** Compares CPUID vendor strings against about 30 hypervisor signatures (`VMwareVMware`, `VBoxVBoxVBox`, `XenVMMXenVMM`, `prl hyperv`, `TCGTCGTCGTCG`, `bhyve bhyve`, `HAXMHAXMHAXM`, `IntelTDX    `, `Linux KVM Hv`, `NoirVisor ZT`, etc.) plus display adapters (`Virtio`, `Standard VGA`, `Basic Display`). |
 | `0x180055579..0x18005b3a5` | `0x5e2c` | **CIS Locale Killswitch & System Fingerprinting:** Checks `GetUserDefaultLocaleName`, `LCIDToLocaleName`, and `HKCU\Keyboard Layout\Preload` against `uk, uz, az, hy, tg, tk, ky, kk, be, ru, ro-md`. Collects OS version (`RtlGetVersion`), CPU/RAM (`GetSystemInfo`, `GlobalMemoryStatusEx`), GPU (`EnumDisplayDevicesW`), disk serial (`GetVolumeInformationW`), and enumerates `HKLM\...\Uninstall` (both 64-bit and `WOW6432Node`). |
 | `0x180004082..0x180006eec` | `0x2e6a` | **Chromium Browser Orchestrator:** Walks `%LOCALAPPDATA%` and `%APPDATA%` for `User Data\(Default|Profile *)` across all Chromium browsers (Chrome, Brave, Edge, Vivaldi, Opera). Targets `Local State`, `Login Data`, `Login Data For Account`, `logins_alt`, `Web Data`, `History`, `Preferences`, `Network\Cookies`, and `Local Storage\leveldb`. |
-| `0x1800634a3..0x1800643a5` | `0x0f02` | **Chrome `v20` ABE Hidden Desktop Setup:** Parses `Local State` for `app_bound_encrypted_key` / `master_app_bound_encrypted_key` and creates an invisible desktop via `user32!CreateDesktopA` (`CloseDesktop` on teardown). |
+| `0x1800634a3..0x1800643a5` | `0x0f02` | **Chrome `v20` ABE Hidden Desktop Setup:** Parses `Local State` for `app_bound_encrypted_key` and creates an invisible desktop via `user32!CreateDesktopA` (`CloseDesktop` on teardown). |
 | `0x1800601c8..0x1800620d2` | `0x1f0a` | **Interactive Token Impersonation Launcher:** Finds Explorer's PID via `GetShellWindow` -> `GetWindowThreadProcessId`, calls `OpenProcess` -> `OpenProcessToken` -> `DuplicateTokenEx`, and spawns the target browser via `CreateProcessWithTokenW` so DPAPI keys match the logged-in user. |
 | `0x18000b161..0x180013537` | `0x83d6` | **Chrome `v20` ABE Process Injector & Key Scraper:** Enumerates processes/threads (`NtQuerySystemInformation`, `CreateToolhelp32Snapshot`, `Thread32First`/`Next`), opens the browser (`OpenProcess`, `OpenThread`), hijacks a thread (`SuspendThread`, `GetThreadContext`, `VirtualAllocEx`, `WriteProcessMemory`, `SetThreadContext`, `ResumeThread`), and scans memory (`VirtualQueryEx`, `ReadProcessMemory`, `CryptUnprotectMemory`) to extract the decrypted `v20` `master_encryption_key`. |
 | `0x18003ec1c..0x180040ccc` | `0x20b0` | **Browser Extension Harvester:** Collects `\Local Extension Settings` and `\Extensions`, skipping anything whose name or ID matches the `5,390`-char blacklist at `0x18007aace` (276 entries: ad-blockers, AV/security add-ons, productivity tools, 60 raw extension IDs). Everything else is stolen, which is how wallet and 2FA extensions get hit. There is no wallet-specific ID list. |
 | `0x1800423cc..0x180043db3` | `0x19e7` | **Gecko / Firefox / Zen Browser Harvester:** Targets `%APPDATA%\<browser>\Profiles\*`, stealing `key4.db`, `logins.json`, `logins.db`, `cookies.sqlite`, `places.sqlite`, `formhistory.sqlite`, `autofill-profiles.json`, and `storage\default`. |
-| `0x180044cf6..0x18004e929` | `0x9c33` | **Discord, Steam & Roblox Credential Engine:** Scans Discord/DiscordPTB `Local Storage\leveldb\*.ldb` & `.log` for `dQw4w9WgXcQ:`, unwraps `Local State` `encrypted_key` via `CryptUnprotectData` (`0x18002ea17`), and decrypts tokens via `bcrypt!BCryptOpenAlgorithmProvider("AES")` + `ChainingModeGCM` + `BCryptDecrypt` into `tokens.txt` (`0x180053091`). Also harvests Steam (`SteamPath`, `config\config.vdf`, `Steam\local.vdf` `ConnectCache`) and calls the Roblox module (`0x18001c972`). |
+| `0x180044cf6..0x18004e929` | `0x9c33` | **Discord, Steam & Roblox Credential Engine:** Scans Discord `Local Storage\leveldb\*.ldb` & `.log` for `dQw4w9WgXcQ:`, unwraps `Local State` `encrypted_key` via `CryptUnprotectData` (`0x18002ea17`), and decrypts tokens via `bcrypt!BCryptOpenAlgorithmProvider("AES")` + `ChainingModeGCM` + `BCryptDecrypt` into `tokens.txt` (`0x180053091`). Also harvests Steam (`SteamPath`, `config\config.vdf`, `Steam\local.vdf` `ConnectCache`) and calls the Roblox module (`0x18001c972`). |
 | `0x18001c972..0x18001d651` | `0x0cdf` | **Roblox `.ROBLOSECURITY` Extractor:** Reads `%LOCALAPPDATA%\Roblox\LocalStorage\RobloxCookies.dat`, parses `CookiesData`, base64-decodes via `CryptStringToBinaryA` (`0x1800345be`), and unwraps DPAPI via `CryptUnprotectData`. |
 | `0x18005c9f6..0x18005e5b5` | `0x1bbf` | **Native-DPI Screenshot Capture:** Calls `SetProcessDPIAware` -> `GetSystemMetrics` -> `GetDC(NULL)` -> `CreateCompatibleDC` -> `CreateCompatibleBitmap` -> `BitBlt` -> `GetDIBits` and prepends a `BM` BMP header. |
 | `0x180015a54..0x18001a0e6` | `0x4692` | **In-Memory Compression:** Calls `ntdll!RtlGetCompressionWorkSpaceSize` and `ntdll!RtlCompressBuffer` to pack the exfiltration archive. |
 | `0x18003c0d4..0x18003e4a6` | `0x23d2` | **HTTPS Exfiltration Client:** Sends the compressed bundle via `WinHttpOpen` -> `WinHttpConnect` -> `WinHttpOpenRequest("POST", "/")` -> `WinHttpSendRequest` -> `WinHttpReceiveResponse` over port `443`. |
-| `0x1800277a6..0x180029944` | `0x219e` | **300ms Cryptocurrency Clipboard Clipper:** Infinite `Sleep(300)` loop polling `GetClipboardSequenceNumber`. Matches clipboard strings against `bc1`, `ltc1`, `bitcoincash:`, `EQ`, `UQ`, and `addr1`, replacing matches via `OpenClipboard` -> `EmptyClipboard` -> `GlobalAlloc` -> `SetClipboardData`. |
-| `0x1800662e1..0x18006827b` | `0x1f9a` | **Secondary Payload Runner:** Fetches follow-up tasks into `%TEMP%` using `curl.exe -fs -o` or `certutil.exe -urlcache -split` and executes `.exe` (`CreateProcessW`), `.msi` (`msiexec.exe /i /qn /norestart`), `.ps1` (`powershell.exe -ex bypass -File`), `.bat`/`.cmd` (`cmd.exe`), or COM `IShellDispatch` (`CoCreateInstance`). |
+| `0x1800277a6..0x180029944` | `0x219e` | **Cryptocurrency Clipboard Clipper:** Keeps polling `GetClipboardSequenceNumber`. Matches clipboard strings against `bc1`, `ltc1`, `bitcoincash:`, `EQ`, `UQ`, and `addr1`, replacing matches via `OpenClipboard` -> `EmptyClipboard` -> `GlobalAlloc` -> `SetClipboardData`. |
+| `0x1800662e1..0x18006827b` | `0x1f9a` | **Secondary Payload Runner:** Fetches follow-up tasks into `%TEMP%` using `curl.exe -fs -o` or `certutil.exe -urlcache -split` and executes `.exe` (`CreateProcessW`), `.msi` (`msiexec.exe /i /qn /norestart`), `.ps1` (`powershell.exe -ex bypass -File`), `.bat`/`.cmd` (`cmd.exe`), and also initializes COM (`CoCreateInstance`; the target CLSID wasn't recovered). |
 
 #### 3. How `build.dll` Gets Around Chrome `v20` App-Bound Encryption
 Since Chrome 127, cookies and passwords in `Login Data` and `Network\Cookies` are prefixed with `v20` and encrypted with a key stored in `Local State` under `os_crypt.app_bound_encrypted_key`. Unlike legacy `v10` keys (which any process running as the user can unwrap via `CryptUnprotectData`), `v20` keys are bound to Chrome's elevated `elevation_service.exe` COM service, which verifies that the calling process is a valid Chrome binary located in `Program Files`.
@@ -370,7 +370,7 @@ Here's how it gets around that, without even needing admin:
 2. `Func 0x1800601c8` grabs the interactive shell's token (`GetShellWindow` -> `OpenProcessToken` -> `DuplicateTokenEx`) and launches/attaches to the browser on that hidden desktop.
 3. `Func 0x18000b161` enumerates the browser's threads via `CreateToolhelp32Snapshot` (`Thread32First` / `Thread32Next`), opens a target thread (`OpenThread`), and suspends it (`SuspendThread`).
 4. It allocates RWX/RX memory inside the legitimate browser process (`VirtualAllocEx`), writes its extraction stub (`WriteProcessMemory`), redirects the thread's instruction pointer `RIP` (`GetThreadContext` -> `SetThreadContext`), and resumes the thread (`ResumeThread`).
-5. Because the injected code executes *inside* the signed `chrome.exe` image, Chrome's `elevation_service` / memory space unwraps the `app_bound_encrypted_key`. The stealer then scans and reads the decrypted 32-byte `master_encryption_key` out of the browser's memory (`VirtualQueryEx` + `ReadProcessMemory` + `CryptUnprotectMemory`), terminates the hidden browser instance (`TerminateProcess` at `0x180015708`), and closes the hidden desktop (`CloseDesktop`).
+5. Because the injected code executes *inside* the signed `chrome.exe` image, Chrome's `elevation_service` / memory space unwraps the `app_bound_encrypted_key`. The stealer then scans and reads the decrypted 32-byte `master_encryption_key` out of the browser's memory (`VirtualQueryEx` + `ReadProcessMemory` + `CryptUnprotectMemory`), terminates the hidden browser instance (`TerminateProcess`), and closes the hidden desktop (`CloseDesktop`).
 6. With the raw 32-byte `v20` AES-256-GCM key, `Func 0x180004082` decrypts every `v20` password in `Login Data` and every `v20` session cookie in `Network\Cookies` offline.
 
 ---
@@ -387,7 +387,7 @@ Knowing what the stealer *can* do is one thing, but I wanted to know what it act
 3. **Vivaldi Browser (`%LOCALAPPDATA%\Vivaldi\User Data\Default`):**
    - Standard DPAPI `v10` logins and session cookies.
 4. **Discord & Discord PTB (`%APPDATA%\discord` & `%APPDATA%\discordptb`):**
-   - LevelDB `.ldb`/`.log` files contained `dQw4w9WgXcQ:` tokens protected with the DPAPI key in `Local State`. Decrypting them via `BCryptDecrypt` (`AES-256-GCM`) yielded live tokens for both my main account and my alt account.
+   - LevelDB `.ldb`/`.log` files contained `dQw4w9WgXcQ:` tokens protected with the DPAPI key in `Local State`. Decrypting them via `BCryptDecrypt` (`AES-256-GCM`) yielded live tokens for both my main account and my alt account. (The stealer's own strings only name `discord`, so I can't prove it also reads the PTB folder, but I treated both tokens as stolen.)
 5. **Steam & Roblox:**
    - Steam `config\config.vdf`, `loginusers.vdf`, and `%LOCALAPPDATA%\Steam\local.vdf` (`ConnectCache` session tokens).
    - Roblox `%LOCALAPPDATA%\Roblox\LocalStorage\RobloxCookies.dat` (`.ROBLOSECURITY` cookie).
@@ -417,7 +417,7 @@ One more thing: the stealer can also download and run anything else its server s
 I can't name anyone, and nothing here proves who they are. But I'm pretty suspicious this is a **team**, not one person, and that they're **Russian-speaking, likely based in Russia or a nearby country**.
 
 **Why I think it's a team:**
-- **The front is a whole fake product.** There's the `geaix.com` website with a dashboard and logins, plus an AI extension forked from Kilo Code. Its changelog has 11 believable release notes leading up to version `1.0.24`. That's a lot of work just for bait.
+- **The front is a whole fake product.** There's the `geaix.com` website with a dashboard and logins, plus an AI extension forked from Kilo Code. Its changelog has 9 believable release notes leading up to version `1.0.24`. That's a lot of work just for bait.
 - **The backend is split up.** The dropper talks to `geaix.com`, but the stealer reports to three different domains (`dtapi.cc`, `x1zsp.cc`, `cfmlapi.cc`). It also carries a campaign ID, so whoever runs it can tell which campaign each victim came from.
 - **It comes out of a build system.** The loader and the stealer were compiled 14 seconds apart, so this isn't a one-off hand-made sample.
 - **Using the stolen sessions is another job.** Bots logged in from Los Angeles and Cologne 8 days later and ran an automated spam script.
@@ -436,9 +436,18 @@ That split is how stealer groups usually work: someone builds the stealer, someo
 
 I didn't sign up or download extensions from them, so I can't prove every one of them pushes the same stealer. But same server, same site and same malware API with only the name swapped is very hard to explain as a coincidence. It looks like one operation making "new AI tools" in bulk, so when one name gets reported, the next one is already waiting. That's one more reason I think it's a team.
 
+**Update (October 24, 2026): they moved, and now I can prove it.** After I reported `geaix.com` to the registrar, the hosting provider and abuse.ch on October 23, the old server went offline and `geaix.com` disappeared from DNS. The other eight domains didn't die, though. They hopped to `207.180.58.108` for a few hours, then landed on a new server, `179.61.227.71` (a different network, AS399486, registered to a Canadian company, with Censys placing the server in Paris; the IP block is again leased through IPXO).
+
+![Censys host view for 179.61.227.71, with axqua.com, opnzy.com, plikai.com, vunex.dev and their www. names pointing at it](/mrbeast/censys-new-host.avif)
+> New server, same domains.
+
+So I made a throwaway account on one of them and checked. Seven of the sites now hand out their own copy of the extension at `/vsix/<brand>-1.0.25.vsix` (`vunex-1.0.25.vsix`, `axqua-1.0.25.vsix` and so on). I downloaded all seven and opened them up without running anything: every file has a different hash, but inside it's the Geaix extension with the **same dropper and the same payload endpoints**, with only the name and publisher swapped. `opnzy.com` is still the spare one with nothing on it.
+
+That's exactly the "next name is already waiting" setup from above, now confirmed. The hashes are in the IOC list below, and all the samples are on [MalwareBazaar](https://bazaar.abuse.ch/browse/tag/Geaix/) under the `Geaix` tag.
+
 **Why Russia:**
 - The stealer **exits right away if the PC's language or keyboard is Russian** or from another CIS country (`ru`, `uk`, `be`, `kk`, `uz`, `az`, `hy`, `tg`, `tk`, `ky`, `ro-md`). Russian-speaking malware groups commonly do this so they don't get in trouble at home.
-- There's a **Russian insult** hidden in the code that sends the stolen data out.
+- There's a **Russian insult** hidden in the stealer's main routine.
 
 These are strong hints, not proof. Strings and language checks can be planted to blame someone else.
 
@@ -452,7 +461,7 @@ If you installed `geaix`, or any `.vsix` you downloaded by hand, check these rig
 - `%USERPROFILE%\.vscode\extensions\geaix.geaix-1.0.24`
 - `%USERPROFILE%\.antigravity\extensions\geaix.geaix-1.0.24`
 - `%TEMP%\<prefix><sep><4-7 hex bytes>\` containing `javaw.exe`, `jli.dll`, and `vcruntime140.dll`, where `<prefix>` is one of:
-  `SessionId`, `allowDots`, `installer`, `svchost`, `wuauclt`, `msupdate`, `text/plain;charset=US-ASCII`, `--\r\n`, `\n  `, `tmp`, `wawarabic`, `serverInfo`
+  `setup`, `update`, `installer`, `svchost`, `wuauclt`, `msupdate`, `sysprep`, `runtime`, `winhlp`, `tmp`, `pkg`, `wsc`
 
 ### Behavioral & YARA / Hunt Queries
 - Any `javaw.exe` executing from `%TEMP%` whose parent is `cmd.exe` spawned with `/c start "" /B` by a VS Code (`Code.exe`) or Antigravity extension-host process.
@@ -469,9 +478,12 @@ If you installed `geaix`, or any `.vsix` you downloaded by hand, check these rig
 | `https://geaix.com/api/vscode/software/download/<id>` | URL | Stage 2 ZIP download endpoint |
 | `https://geaix.com/api/vscode/software/started` | URL | Stage 2 execution callback |
 | `wss://geaix.com/api/ws?client=vscode&token=<...>` | WebSocket | 15-minute live process & filesystem telemetry |
-| `64.204.180.86` | IP | Server behind `geaix.com` and the sibling sites (AS213250, Frankfurt, DE) |
-| `ahiak.com`, `aiqana.com`, `axqua.com`, `excelnt.ai`, `lebang.si`, `plikai.com`, `vunex.dev` (+ `www.`) | Domain | Same Geaix site under other names, same `/api/vscode/software/pick` endpoint (checked Oct 22, 2026) |
-| `opnzy.com` (+ `www.`) | Domain | Points to the same IP, returns "Not found" as of Oct 22, 2026 |
+| `64.204.180.86` | IP | Original server behind `geaix.com` and the sibling sites (AS213250, Frankfurt, DE), offline since Oct 23, 2026 |
+| `207.180.58.108` | IP | Interim server for the sibling sites on Oct 23, 2026 (AS213250) |
+| `179.61.227.71` | IP | Current server for the sibling sites (AS399486), as of Oct 24, 2026 |
+| `https://geaix.com/vsix/geaix-1.0.25.vsix` | URL | Replaced 1.0.24 on the same path (Oct 23, 2026) |
+| `ahiak.com`, `aiqana.com`, `axqua.com`, `excelnt.ai`, `lebang.si`, `plikai.com`, `vunex.dev` (+ `www.`) | Domain | Same Geaix site under other names; each serves `/vsix/<brand>-1.0.25.vsix` with the same dropper (confirmed Oct 24, 2026) |
+| `opnzy.com` (+ `www.`) | Domain | Points to the same IP, still no payload ("Not found") as of Oct 24, 2026 |
 | `dtapi.cc:443` | C2 Domain | Primary Stage 3 HTTPS C2 (`0x18007e4ed`, XOR key `0x8d`) |
 | `x1zsp.cc:443` | C2 Domain | Secondary Stage 3 HTTPS C2 (`0x18007d214`, XOR key `0xe5`) |
 | `cfmlapi.cc:443` | C2 Domain | Tertiary Stage 3 HTTPS C2 (`0x180079451`, XOR key `0xd9`) |
@@ -481,6 +493,14 @@ If you installed `geaix`, or any `.vsix` you downloaded by hand, check these rig
 | File | Size (Bytes) | SHA-256 |
 |---|---|---|
 | `geaix-1.0.24.vsix` | `27,124,774` | `02cd28dc0a9c1ee109462aa6942dfbc3bdb1af9210315eaa326e73e49d01ac0d` |
+| `geaix-1.0.25.vsix` | `28,531,046` | `b6ac717195b74240e6c1bddf202be6bb3e11e4dd5cd4767072b6a8fdd3567a8b` |
+| `vunex-1.0.25.vsix` | `28,528,022` | `4e95d59ceff134e041a08ff8f78d3b52a12b1724768d2103c386215d7d164989` |
+| `axqua-1.0.25.vsix` | `28,530,208` | `66d1899ba385c4b1dcea534aea16d00223233acacdcae0f9611ff97acb00ecc2` |
+| `plikai-1.0.25.vsix` | `28,529,729` | `285ecbdb10b2ae2c71f82dbbd99aa73afcbb33333208929b8b751e95a480b62a` |
+| `lebang-1.0.25.vsix` | `28,528,834` | `f101b41b19a38b7c42f7fff93f59f4a7e8dfbeff5ac2f3a3605523d5b8579c2c` |
+| `ahiak-1.0.25.vsix` | `28,530,548` | `eb53d22a1d8a376960d2985c9c69826d52eaf535071e939296aa7102b3c43637` |
+| `aiqana-1.0.25.vsix` | `28,530,663` | `f78c077fdce8231c654834294c686d6fe202665a5d4aca4041f8bc1b29bb96c2` |
+| `excelnt-1.0.25.vsix` | `28,532,508` | `2d7c665f5282a6210b33e7f4cccc453b736ceba88ba9d27b868c0c5e0c046f08` |
 | `extension/dist/extension.js` (inside VSIX) | `36,654,196` | `c9189e2c1ff2d216618059513735b034598cbb728d5cc6542f3f1ef79d3c7975` |
 | `javaw.exe` (signed Adoptium Temurin) | `50,344` | `ca798475399c19c13be92b91f262003e82befe5ecc35a0e25e72522868466357` |
 | `jli.dll` (malicious Stage 2 `loader.dll`) | `736,256` | `d76e906a18c04826996d1f30de248e7a0e50c48814c82e9583b36c91fdf66f00` |
