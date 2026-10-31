@@ -453,11 +453,20 @@ That's exactly the "next name is already waiting" setup from above, now confirme
 
 It's being pushed as a free AI deal. Posts on Facebook and a Chinese-language forum promise **"Claude Code free for 6 months"** with Claude Fable 5.1, Claude Opus 5.5 and GPT models. You sign up, redeem a code (`ALP27`), download the Alpme `.vsix` and use "Install from VSIX...". The Facebook post I saw had 11 shares. It's the same trick that got me: a good deal, then one file installed by hand.
 
+![A Facebook post offering Claude Code free for 6 months, with the code ALP27 and steps to install the Alpme .vsix by hand](/mrbeast/alpme-facebook-lure.avif)
+> The lure. Names and profile photos are blacked out in these screenshots, because the people posting may be victims themselves.
+
 I downloaded `alpme-1.0.25.vsix` on November 1 and opened it without running it. Its `extension.js` is byte-for-byte the same size as the `vunex` copy, the first difference with the brand masked is just `.com` versus `.dev`, and the last 250 KB is identical. It's the same dropper. I didn't fetch or run the second stage, so I can't say whether the later stages or C2 servers changed.
 
 People may already be getting hit. These are their reports, not my findings, but they fit:
 - A Trustpilot review from October 29 says Alpme steals Instagram, Discord and browser logins and cookies through the VS Code extension.
 - A forum user posted an antivirus alert (`Trojan/Injector.aj!crit`) for `C:\Users\xx\AppData\Local\Temp\runtime_d43f300e\7si.exe`. That folder name fits the dropper's pattern exactly, though the `7si.exe` filename is different from the `javaw.exe` I saw on my machine. So check `%TEMP%` for the folder pattern, not only for that filename.
+
+![A one-star Trustpilot review of alpme.com titled Session stealing scam, dated October 29, 2026](/mrbeast/alpme-trustpilot-review.avif)
+> "Session stealing scam."
+
+![A NodeSeek thread promoting 180 days of free Claude through alpme.com, with a reply showing an antivirus alert for runtime_d43f300e\7si.exe](/mrbeast/alpme-nodeseek-thread.avif)
+> The same offer on NodeSeek. Reply #8 is the antivirus alert, and reply #18 asks the admin to look at it as suspected malware.
 
 The same server also hosts **`fuckukraine.lol`**, which redirects straight to an **"Admin sign in"** page. It has the same app build ID as `alpme.com` (`ZWXu2CyelNvUh_568KqY7`) and the same branding template ("Fuckukraine Labs" next to "Alpme Labs"), so it's the admin side of this deployment. I didn't try to log in, so I can't say what's behind it.
 
