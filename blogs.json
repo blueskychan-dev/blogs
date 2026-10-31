@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T18:40:55.822Z",
+  "generatedAt": "2026-10-31T18:43:27.595Z",
   "count": 13,
   "blogs": [
     {
@@ -20,6 +20,9 @@
         "CyberSecurity"
       ],
       "assets": [
+        "/mrbeast/alpme-facebook-lure.avif",
+        "/mrbeast/alpme-nodeseek-thread.avif",
+        "/mrbeast/alpme-trustpilot-review.avif",
         "/mrbeast/attack-flow.avif",
         "/mrbeast/censys-alpme-host.avif",
         "/mrbeast/censys-new-host.avif",
@@ -52,6 +55,9 @@
         "CyberSecurity"
       ],
       "assets": [
+        "/mrbeast/alpme-facebook-lure.avif",
+        "/mrbeast/alpme-nodeseek-thread.avif",
+        "/mrbeast/alpme-trustpilot-review.avif",
         "/mrbeast/attack-flow.avif",
         "/mrbeast/censys-alpme-host.avif",
         "/mrbeast/censys-new-host.avif",
