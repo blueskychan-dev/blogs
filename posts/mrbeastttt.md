@@ -16,6 +16,8 @@ tags:
 
 > This article is also supported by another language: [Thai](/post/mrbeastttt-th)
 
+> **Warning (November 1, 2026): this is still active, now under the name Alpme.** If you saw a "free Claude Code for 6 months" post, or a code like `ALP27`, for `alpme.com`, **don't install its `.vsix`**. It's the same malware as in this post, and Anthropic and OpenAI have nothing to do with it. Already installed it? Go to [the November 1 update](#update-november-1) and What You Should Do at the bottom.
+
 # Introduction
 
 Hey, Mind here! Back with another security post, and this one's title is basically *"how the hell did I get hit?"*
@@ -445,6 +447,25 @@ So I made a throwaway account on one of them and checked. Seven of the sites now
 
 That's exactly the "next name is already waiting" setup from above, now confirmed. The hashes are in the IOC list below, and all the samples are on [MalwareBazaar](https://bazaar.abuse.ch/browse/tag/Geaix/) under the `Geaix` tag.
 
+<a id="update-november-1"></a>
+
+**Update (November 1, 2026): most of those names are gone, and the next one is spreading.** All of the October 24 domains except `vunex.dev` have now disappeared from DNS. But the operation just moved on to a name that wasn't on my list: **`alpme.com`**, a Dynadot domain registered back in April.
+
+It's being pushed as a free AI deal. Posts on Facebook and a Chinese-language forum promise **"Claude Code free for 6 months"** with Claude Fable 5.1, Claude Opus 5.5 and GPT models. You sign up, redeem a code (`ALP27`), download the Alpme `.vsix` and use "Install from VSIX...". The Facebook post I saw had 11 shares. It's the same trick that got me: a good deal, then one file installed by hand.
+
+I downloaded `alpme-1.0.25.vsix` on November 1 and opened it without running it. Its `extension.js` is byte-for-byte the same size as the `vunex` copy, the first difference with the brand masked is just `.com` versus `.dev`, and the last 250 KB is identical. It's the same dropper. I didn't fetch or run the second stage, so I can't say whether the later stages or C2 servers changed.
+
+People may already be getting hit. These are their reports, not my findings, but they fit:
+- A Trustpilot review from October 29 says Alpme steals Instagram, Discord and browser logins and cookies through the VS Code extension.
+- A forum user posted an antivirus alert (`Trojan/Injector.aj!crit`) for `C:\Users\xx\AppData\Local\Temp\runtime_d43f300e\7si.exe`. That folder name fits the dropper's pattern exactly, though the `7si.exe` filename is different from the `javaw.exe` I saw on my machine. So check `%TEMP%` for the folder pattern, not only for that filename.
+
+The same server also hosts **`fuckukraine.lol`**, which redirects straight to an **"Admin sign in"** page. It has the same app build ID as `alpme.com` (`ZWXu2CyelNvUh_568KqY7`) and the same branding template ("Fuckukraine Labs" next to "Alpme Labs"), so it's the admin side of this deployment. I didn't try to log in, so I can't say what's behind it.
+
+![Censys host view for 151.247.193.102, showing alpme.com and www.fuckukraine.lol on AS399486 in Paris](/mrbeast/censys-alpme-host.avif)
+> Same network as the last server, new name on top.
+
+That server is on AS399486 again, the same network as `179.61.227.71`, and Censys places it in Paris. `ahefi.com` uses the same site description and an IPXO-leased IP, and its site was down when checked on November 1, but I don't have a sample from it.
+
 **Why Russia:**
 - The stealer **exits right away if the PC's language or keyboard is Russian** or from another CIS country (`ru`, `uk`, `be`, `kk`, `uz`, `az`, `hy`, `tg`, `tk`, `ky`, `ro-md`). Russian-speaking malware groups commonly do this so they don't get in trouble at home.
 - There's a **Russian insult** hidden in the stealer's main routine.
@@ -455,12 +476,13 @@ These are strong hints, not proof. Strings and language checks can be planted to
 
 ## Indicators of Compromise (IOCs) & Hunting Rules
 
-If you installed `geaix`, or any `.vsix` you downloaded by hand, check these right now.
+If you installed `geaix`, `alpme`, or any `.vsix` you downloaded by hand, check these right now.
 
 ### Host Paths
 - `%USERPROFILE%\.vscode\extensions\geaix.geaix-1.0.24`
 - `%USERPROFILE%\.antigravity\extensions\geaix.geaix-1.0.24`
-- `%TEMP%\<prefix><sep><4-7 hex bytes>\` containing `javaw.exe`, `jli.dll`, and `vcruntime140.dll`, where `<prefix>` is one of:
+- The same paths with `alpme.alpme-1.0.25`, or any other brand from the list below
+- `%TEMP%\<prefix><sep><4-7 hex bytes>\` containing `javaw.exe`, `jli.dll`, and `vcruntime140.dll` (a user reported `7si.exe` in `runtime_d43f300e` on Alpme), where `<prefix>` is one of:
   `setup`, `update`, `installer`, `svchost`, `wuauclt`, `msupdate`, `sysprep`, `runtime`, `winhlp`, `tmp`, `pkg`, `wsc`
 
 ### Behavioral & YARA / Hunt Queries
@@ -480,10 +502,16 @@ If you installed `geaix`, or any `.vsix` you downloaded by hand, check these rig
 | `wss://geaix.com/api/ws?client=vscode&token=<...>` | WebSocket | 15-minute live process & filesystem telemetry |
 | `64.204.180.86` | IP | Original server behind `geaix.com` and the sibling sites (AS213250, Frankfurt, DE), offline since Oct 23, 2026 |
 | `207.180.58.108` | IP | Interim server for the sibling sites on Oct 23, 2026 (AS213250) |
-| `179.61.227.71` | IP | Current server for the sibling sites (AS399486), as of Oct 24, 2026 |
+| `179.61.227.71` | IP | Server for the sibling sites from Oct 24, 2026 (AS399486); only `vunex.dev` still pointed here on Nov 1, 2026 |
+| `151.247.193.102` | IP | Current server for `alpme.com` and `fuckukraine.lol` (AS399486), as of Nov 1, 2026 |
+| `alpme.com` (+ `www.`) | Domain | Active rebrand; serves `/vsix/alpme-1.0.25.vsix` with the same dropper (confirmed Nov 1, 2026) |
+| `https://alpme.com/api/vscode/software/download/<id>` | URL | Stage 2 download path on Alpme (seen in an Oct 27, 2026 urlscan record, returned 403) |
+| `fuckukraine.lol` (+ `www.`) | Domain | Admin login at `/admin/login` for the same deployment (confirmed Nov 1, 2026) |
+| `ahefi.com` (+ `www.`) | Domain | Same site description, IPXO-leased `147.185.197.132`; site down and no sample as of Nov 1, 2026 |
+| `/_g/hobjkdkxo2.bin` | URL path | Encrypted anti-analysis script loaded by the site template (SHA-256 `77a995856d8c61c687f4ee333809b35aa33d4cb4b984da45012c14226156cf52`) |
 | `https://geaix.com/vsix/geaix-1.0.25.vsix` | URL | Replaced 1.0.24 on the same path (Oct 23, 2026) |
-| `ahiak.com`, `aiqana.com`, `axqua.com`, `excelnt.ai`, `lebang.si`, `plikai.com`, `vunex.dev` (+ `www.`) | Domain | Same Geaix site under other names; each serves `/vsix/<brand>-1.0.25.vsix` with the same dropper (confirmed Oct 24, 2026) |
-| `opnzy.com` (+ `www.`) | Domain | Points to the same IP, still no payload ("Not found") as of Oct 24, 2026 |
+| `ahiak.com`, `aiqana.com`, `axqua.com`, `excelnt.ai`, `lebang.si`, `plikai.com`, `vunex.dev` (+ `www.`) | Domain | Same Geaix site under other names; each served `/vsix/<brand>-1.0.25.vsix` with the same dropper (confirmed Oct 24, 2026); all but `vunex.dev` gone from DNS by Nov 1, 2026 |
+| `opnzy.com` (+ `www.`) | Domain | Spare brand with no payload as of Oct 24, 2026; gone from DNS by Nov 1, 2026 |
 | `dtapi.cc:443` | C2 Domain | Primary Stage 3 HTTPS C2 (`0x18007e4ed`, XOR key `0x8d`) |
 | `x1zsp.cc:443` | C2 Domain | Secondary Stage 3 HTTPS C2 (`0x18007d214`, XOR key `0xe5`) |
 | `cfmlapi.cc:443` | C2 Domain | Tertiary Stage 3 HTTPS C2 (`0x180079451`, XOR key `0xd9`) |
@@ -501,7 +529,9 @@ If you installed `geaix`, or any `.vsix` you downloaded by hand, check these rig
 | `ahiak-1.0.25.vsix` | `28,530,548` | `eb53d22a1d8a376960d2985c9c69826d52eaf535071e939296aa7102b3c43637` |
 | `aiqana-1.0.25.vsix` | `28,530,663` | `f78c077fdce8231c654834294c686d6fe202665a5d4aca4041f8bc1b29bb96c2` |
 | `excelnt-1.0.25.vsix` | `28,532,508` | `2d7c665f5282a6210b33e7f4cccc453b736ceba88ba9d27b868c0c5e0c046f08` |
+| `alpme-1.0.25.vsix` | `28,527,724` | `edbb2619827bab21ed33fdd1c9ebe83f07c6db7ce92598eca7fb0aa2cd85a639` |
 | `extension/dist/extension.js` (inside VSIX) | `36,654,196` | `c9189e2c1ff2d216618059513735b034598cbb728d5cc6542f3f1ef79d3c7975` |
+| `extension/dist/extension.js` (inside Alpme VSIX) | `36,645,066` | `2efe984ab0c9dcc24df5586dfcf1f62bd8f4ee5e804ebdd6acddd40ab2e853aa` |
 | `javaw.exe` (signed Adoptium Temurin) | `50,344` | `ca798475399c19c13be92b91f262003e82befe5ecc35a0e25e72522868466357` |
 | `jli.dll` (malicious Stage 2 `loader.dll`) | `736,256` | `d76e906a18c04826996d1f30de248e7a0e50c48814c82e9583b36c91fdf66f00` |
 | `vcruntime140.dll` (signed MS CRT) | `123,472` | `184146852727a9db4eea06178716bec3cdbb1015c911f6b0f915b184ad7775b2` |
